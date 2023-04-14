@@ -1,3 +1,4 @@
+// TODO TBD linter
 module.exports = {
   root: true,
   extends: [
@@ -31,7 +32,13 @@ module.exports = {
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/func-call-spacing': ['error', 'never'],
     '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
+    '@typescript-eslint/no-unused-vars': ['error',
+      {
+        ignoreRestSiblings: true,
+        args: 'all',
+        argsIgnorePattern: '^_'
+      }
+    ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/indent': ['error', 2, { VariableDeclarator: 4 }],
     '@typescript-eslint/type-annotation-spacing': ['error', {

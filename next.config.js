@@ -6,7 +6,8 @@ const nextConfig = {
     apiUrl: process.env.NEXT_PUBLIC_API_URL
   },
   reactStrictMode: true,
-  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+  // TODO I hate this config !!!
+  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js', 'api.ts'],
   webpack
 }
 
