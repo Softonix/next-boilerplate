@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod'
 import { procedure, router } from './trpc'
 
 export const appRouter = router({
@@ -18,4 +18,4 @@ export const appRouter = router({
   })
 })
 
-export type ServerRouter = typeof appRouter;
+export type TServerRouter = typeof appRouter;

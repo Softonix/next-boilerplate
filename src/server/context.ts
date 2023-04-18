@@ -9,4 +9,4 @@ export async function createContext (_opts?: trpcNext.CreateNextContextOptions) 
   return { prisma }
 }
 
-export type Context = trpc.inferAsyncReturnType<typeof createContext>;
+export type TContext = trpc.inferAsyncReturnType<typeof createContext>

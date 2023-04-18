@@ -17,14 +17,14 @@
     "moduleResolution": "node",
     "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
     "paths": {
       "@/*": [
         "./src/*"
       ]
-    }
+    },
+    "isolatedModules": true
   },
   "include": [
     "dts/*",
