@@ -6,14 +6,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:migrate:dev": "npx prisma migrate dev"
   },
   "dependencies": {
     "antd": "^5.4.2",
+    "@prisma/client": "^4.12.0",
+    "@trpc/client": "^10.20.0",
+    "@trpc/next": "^10.20.0",
     "next": "13.3.0",
+    "prisma": "^4.12.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "unplugin-icons": "^0.16.1"
+    "unplugin-icons": "^0.16.1",
+    "trpc": "^0.11.3",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@svgr/core": "^7.0.0",

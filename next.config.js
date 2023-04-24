@@ -6,7 +6,7 @@ const nextConfig = {
     apiUrl: process.env.NEXT_PUBLIC_API_URL
   },
   reactStrictMode: true,
-  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
+  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js', 'api.ts'],
   transpilePackages: ['antd'],
   webpack: (config) => {
     config.plugins.push(AutoImports)
