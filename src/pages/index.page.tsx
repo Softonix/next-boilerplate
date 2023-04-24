@@ -1,7 +1,12 @@
-import Link from 'next/link'
-
 export default function Home () {
-  return (
-    <Link href="/example-page">To Example Page</Link>
-  )
+  const router = useRouter()
+  return <>
+    <NextLink href="/example-page">To Example Page</NextLink>
+
+    <AntButton
+      type="primary"
+      className="ml-4"
+      onClick={() => router.push('/example-page')}
+    >To ExamplePage</AntButton>
+  </>
 }

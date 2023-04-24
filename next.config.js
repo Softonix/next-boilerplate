@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const webpack = require('./next.config.webpack')
+const AutoImports = require('./config/auto-imports')
 
 const nextConfig = {
   publicRuntimeConfig: {
@@ -7,7 +7,11 @@ const nextConfig = {
   },
   reactStrictMode: true,
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
-  webpack
+  transpilePackages: ['antd'],
+  webpack: (config) => {
+    config.plugins.push(AutoImports)
+    return config
+  }
 }
 
 module.exports = nextConfig
