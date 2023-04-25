@@ -73,6 +73,8 @@
     "ButtonTheme": true,
     "ExamplePageComponent": true,
     "FC": true,
+    "IconCar": true,
+    "IconCart": true,
     "NextAppContext": true,
     "NextAppProps": true,
     "NextHead": true,

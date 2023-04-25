@@ -20,10 +20,13 @@ const ExamplePage: FC = () => {
 
   return (
     <div className="flex min-h-screen flex-col items-center p-24">
-      <AntSpace>
-        <AntDatePicker />
-        <AntButton type="primary">Primary Button</AntButton>
-      </AntSpace>
+      <div className='flex items-center gap-4 mb-5'>
+        <IconCar className='text-red-500' />
+        <IconCart className='text-green-500' />
+      </div>
+
+      <AntDatePicker />
+      <AntButton type="primary" className='mt-5'>Primary Button</AntButton>
 
       {test} <br />
       {computedTest} <br />

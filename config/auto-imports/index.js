@@ -1,9 +1,10 @@
 const AutoImports = require('unplugin-auto-import/webpack')
 
-const NextImports = require('./next')
-const AntImports = require('./ant')
+const NextImports = require('./next-imports')
+const AntImports = require('./ant-imports')
+const { IconsPluginCustom, IconsImports } = require('./icons-imports')
 
-const AutoImportsPlugin = AutoImports({
+const AutoImportsPlugin = () => AutoImports({
   dts: './dts/auto-imports.d.ts',
 
   dirs: [
@@ -27,8 +28,12 @@ const AutoImportsPlugin = AutoImports({
       type: true
     },
     AntImports,
+    ...IconsImports(),
     ...NextImports
   ]
 })
 
-module.exports = AutoImportsPlugin
+module.exports = {
+  AutoImportsPlugin,
+  IconsPluginCustom
+}

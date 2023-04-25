@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const AutoImports = require('./config/auto-imports')
+const { AutoImportsPlugin, IconsPluginCustom } = require('./config/auto-imports')
 
 const nextConfig = {
   publicRuntimeConfig: {
@@ -9,7 +9,8 @@ const nextConfig = {
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js', 'api.ts'],
   transpilePackages: ['antd'],
   webpack: (config) => {
-    config.plugins.push(AutoImports)
+    config.plugins.push(AutoImportsPlugin())
+    config.plugins.push(IconsPluginCustom())
     return config
   }
 }

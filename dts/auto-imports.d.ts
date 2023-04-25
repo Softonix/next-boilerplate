@@ -76,6 +76,8 @@ declare global {
   const AntWatermark: typeof import('antd')['Watermark']
   const ButtonTheme: typeof import('../src/theme/button')['ButtonTheme']
   const ExamplePageComponent: typeof import('../src/pages/example-page/components/ExamplePageComponent')['ExamplePageComponent']
+  const IconCar: typeof import('~icons/icon/car.jsx')['default']
+  const IconCart: typeof import('~icons/icon/cart.jsx')['default']
   const NextHead: typeof import('next/head')['default']
   const NextImage: typeof import('next/image')['default']
   const NextLink: typeof import('next/link')['default']
