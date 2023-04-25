@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const { AutoImportsPlugin, IconsPluginCustom } = require('./config/auto-imports')
+const bundleAnalyzer = require('@next/bundle-analyzer')
 
 const nextConfig = {
   publicRuntimeConfig: {
@@ -15,4 +16,7 @@ const nextConfig = {
   }
 }
 
-module.exports = nextConfig
+module.exports = bundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+  openAnalyzer: true
+})(nextConfig)
