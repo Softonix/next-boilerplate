@@ -22,10 +22,15 @@ const ExamplePage: FC = () => {
 
   const [exampleData, setExampleData] = useState<IExampleInterface | undefined>()
   async function getExampleData () {
-    const res = await exampleViewService.getSomeData()
-    console.log(res)
+    try {
+      setLoading(true)
+      const res = await exampleViewService.getSomeData()
+      console.log(res)
 
-    setExampleData(res)
+      setExampleData(res)
+    } finally {
+      setLoading(false)
+    }
   }
   useEffect(() => {
     getExampleData()
@@ -74,7 +79,7 @@ const ExamplePage: FC = () => {
           <AntSpin spinning={loading}>
             <AntAlert
               message="Alert message title"
-              description="Further details about the context of this alert."
+              description={JSON.stringify(exampleData) ?? 'Loading'}
               type="info"
             />
           </AntSpin>
@@ -87,9 +92,7 @@ const ExamplePage: FC = () => {
         <div className="mt-5">
           {test} <br />
           {computedTest} <br />
-          <button onClick={() => setTest(test + 1)}>increment</button>
-
-          {JSON.stringify(exampleData) ?? 'Loading'}
+          <AntButton onClick={() => setTest(test + 1)}>increment</AntButton>
 
           <ExamplePageComponent />
         </div>
