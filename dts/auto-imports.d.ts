@@ -77,10 +77,13 @@ declare global {
   const ExamplePageComponent: typeof import('../pages/example-page/components/ExamplePageComponent')['ExamplePageComponent']
   const IconCar: typeof import('~icons/icon/car.jsx')['default']
   const IconCart: typeof import('~icons/icon/cart.jsx')['default']
-  const NextHead: typeof import('next/head')['default']
+  const NextDocument: typeof import('next/document')['Document']
+  const NextHead: typeof import('next/document')['Head']
+  const NextHtml: typeof import('next/document')['Html']
   const NextImage: typeof import('next/image')['default']
   const NextLink: typeof import('next/link')['default']
-  const NextScript: typeof import('next/script')['default']
+  const NextMain: typeof import('next/document')['Main']
+  const NextScript: typeof import('next/document')['NextScript']
   const createRef: typeof import('react')['createRef']
   const exampleGeneralService: typeof import('../services/example-general.service')['exampleGeneralService']
   const exampleViewService: typeof import('../pages/example-page/example-view.service')['exampleViewService']
@@ -113,4 +116,6 @@ declare global {
   export type { FC } from 'react'
   // @ts-ignore
   export type { AppContext as NextAppContext, AppProps as NextAppProps } from 'next/app'
+  // @ts-ignore
+  export type { DocumentContext as NextDocumentContext } from 'next/document'
 }

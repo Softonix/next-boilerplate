@@ -1,14 +1,6 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  type DocumentContext
-} from 'next/document'
-
-export default class MyDocument extends Document {
-  static async getInitialProps (ctx: DocumentContext) {
-    const initialProps = await Document.getInitialProps(ctx)
+export default class AppDocument extends Document {
+  static async getInitialProps (ctx: NextDocumentContext) {
+    const initialProps = await NextDocument.getInitialProps(ctx)
     return {
       ...initialProps,
       styles: (
@@ -21,13 +13,13 @@ export default class MyDocument extends Document {
 
   render () {
     return (
-      <Html lang='en'>
-        <Head />
+      <NextHtml lang='en'>
+        <NextHead />
         <body>
-          <Main />
+          <NextMain />
           <NextScript />
         </body>
-      </Html>
+      </NextHtml>
     )
   }
 }
