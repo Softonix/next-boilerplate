@@ -1,5 +1,6 @@
 import React from 'react'
 import { ConfigProvider } from 'antd'
+
 import { ButtonTheme } from './button'
 
 export const ThemeProvider = (node: JSX.Element) => (

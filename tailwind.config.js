@@ -8,8 +8,5 @@ module.exports = {
   theme: {
   },
 
-  corePlugins: {
-    preflight: false // <== disable this!
-  },
   plugins: []
 }
