@@ -11,8 +11,7 @@ const AutoImportsPlugin = () => AutoImports({
     './components',
     './services',
     './pages/**/*.service.ts',
-    './pages/**/components',
-    './theme'
+    './pages/**/components'
   ],
 
   eslintrc: {
