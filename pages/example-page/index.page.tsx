@@ -18,6 +18,8 @@ const ExamplePage: FC = () => {
     })
   }
 
+  const [loading, setLoading] = useState(false)
+
   const [exampleData, setExampleData] = useState<IExampleInterface | undefined>()
   async function getExampleData () {
     const res = await exampleViewService.getSomeData()
@@ -45,7 +47,7 @@ const ExamplePage: FC = () => {
         <AntDatePicker />
 
         <AntButton type="primary" className='mt-5' onClick={showMessage}>
-        Display message
+          Display message
         </AntButton>
 
         <AntButton
@@ -54,7 +56,7 @@ const ExamplePage: FC = () => {
           danger
           onClick={() => setIsModalOpen(true)}
         >
-        Open Modal
+          Open Modal
         </AntButton>
 
         <AntModal
@@ -68,13 +70,29 @@ const ExamplePage: FC = () => {
           <p>Some contents...</p>
         </AntModal>
 
-        {test} <br />
-        {computedTest} <br />
-        <button onClick={() => setTest(test + 1)}>increment</button>
+        <div className="mt-5">
+          <AntSpin spinning={loading}>
+            <AntAlert
+              message="Alert message title"
+              description="Further details about the context of this alert."
+              type="info"
+            />
+          </AntSpin>
+          <div className="mt-5">
+            Loading state：
+            <AntSwitch checked={loading} onChange={(checked => setLoading(checked))} />
+          </div>
+        </div>
 
-        {JSON.stringify(exampleData) ?? 'Loading'}
+        <div className="mt-5">
+          {test} <br />
+          {computedTest} <br />
+          <button onClick={() => setTest(test + 1)}>increment</button>
 
-        <ExamplePageComponent/>
+          {JSON.stringify(exampleData) ?? 'Loading'}
+
+          <ExamplePageComponent />
+        </div>
       </div>
     </>
   )
