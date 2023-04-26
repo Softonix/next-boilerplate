@@ -8,10 +8,10 @@ const AutoImportsPlugin = () => AutoImports({
   dts: './dts/auto-imports.d.ts',
 
   dirs: [
-    './components',
-    './services',
-    './pages/**/*.service.ts',
-    './pages/**/components'
+    './src/components',
+    './src/services',
+    './src/pages/**/*.service.ts',
+    './src/pages/**/components'
   ],
 
   eslintrc: {

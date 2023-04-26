@@ -20,11 +20,19 @@
     "incremental": true,
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
+      ],
+      "public/*": [
+        "public/*"
+      ],
+      "config/*": [
+        "config/*"
       ]
     }
   },
-  "types": ["unplugin-icons/types/react"],
+  "types": [
+    "unplugin-icons/types/react"
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

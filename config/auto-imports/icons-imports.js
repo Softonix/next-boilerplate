@@ -2,7 +2,7 @@ const { FileSystemIconLoader } = require('unplugin-icons/loaders')
 const path = require('pathe')
 const fs = require('fs')
 const { pascalCase } = require('change-case')
-const iconsPath = path.join(process.cwd(), '/assets/icons')
+const iconsPath = path.join(process.cwd(), '/src/assets/icons')
 
 const Icons = require('unplugin-icons/webpack')
 

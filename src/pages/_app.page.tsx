@@ -1,8 +1,8 @@
 import '@/assets/styles/main.scss'
-import '../public/antd.min.css'
-import { ThemeProvider } from '../theme'
+import 'public/antd.min.css'
+import { ThemeProvider } from 'config/theme'
 
-import { trpc } from '../utils/trpc'
+import { trpc } from '@/utils/trpc'
 
 function App ({ Component, pageProps }: NextAppProps) {
   return ThemeProvider(<Component {...pageProps} />)

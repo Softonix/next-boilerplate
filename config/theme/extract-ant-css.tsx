@@ -1,8 +1,8 @@
 import fs from 'fs'
 import { extractStyle } from '@ant-design/static-style-extract'
-import { ThemeProvider } from '../theme'
+import { ThemeProvider } from './index'
 
-const outputPath = './public/antd.min.css'
+const outputPath = 'public/antd.min.css'
 
 const css = extractStyle(ThemeProvider)
 

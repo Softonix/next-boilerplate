@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build",
-    "predev": "ts-node --project ./tsconfig.node.json ./scripts/genAntdCss.tsx",
-    "prebuild": "cross-env NODE_ENV=production ts-node --project ./tsconfig.node.json ./scripts/genAntdCss.tsx",
+    "predev": "ts-node --project ./tsconfig.node.json ./config/theme/extract-ant-css.tsx",
+    "prebuild": "cross-env NODE_ENV=production ts-node --project ./tsconfig.node.json ./config/theme/extract-ant-css.tsx",
     "db:migrate:dev": "npx prisma migrate dev"
   },
   "dependencies": {
