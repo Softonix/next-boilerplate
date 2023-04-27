@@ -46,7 +46,7 @@ const ExamplePage: FC = () => {
       <div className="flex min-h-screen flex-col items-center p-24">
         <div className='flex items-center gap-4 mb-5'>
           <IconCar className='text-red-500' />
-          <IconCart className='text-green-500' />
+          <IconCart className='text-green-500 hover:text-red-500' />
         </div>
 
         <AntDatePicker />
