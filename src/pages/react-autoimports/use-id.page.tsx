@@ -1,9 +1,9 @@
 export default function Main () {
   const id = useId()
   return (
-    <CustomLayout>
+    <LayoutHooks>
       <label htmlFor={id} />
       <AntInput type="text" id={id}/>
-    </CustomLayout>
+    </LayoutHooks>
   )
 }

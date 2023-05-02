@@ -18,13 +18,13 @@ export default function Main () {
   }
 
   return (
-    <CustomLayout>
+    <LayoutHooks>
       <AntInput type="text" value={searchQuery} onChange={handleSearchInputChange} />
       <ul>
         {searchResults.map((result) => (
           <li key={result.id}>{result.title}</li>
         ))}
       </ul>
-    </CustomLayout>
+    </LayoutHooks>
   )
 }

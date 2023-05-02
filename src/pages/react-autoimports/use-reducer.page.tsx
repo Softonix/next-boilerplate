@@ -13,11 +13,11 @@ const reducer = (state: {width: number}, action : ('plus' | 'minus')) => {
 
 export default function Main () {
   const [state, dispatch] = useReducer(reducer, initialState)
-  return <CustomLayout>
+  return <LayoutHooks>
     <div style={{ background: 'teal', height: '30px', width: state.width }}></div>
     <div style={{ marginTop: '3rem' }}>
       <AntButton onClick={() => dispatch('plus')}>Increase bar size</AntButton>
       <AntButton onClick={() => dispatch('minus')}>Decrease bar size</AntButton>
     </div>
-  </CustomLayout>
+  </LayoutHooks>
 }

@@ -9,14 +9,15 @@ export default function Main () {
   }
 
   const onClick = () => setInc(i => i + 1)
+  console.log(inc)
 
   return (
-    <CustomLayout>
+    <LayoutHooks>
       Factorial of
       <AntInput type="number" value={number} onChange={onChange} />
       is {factorial}
       <AntButton onClick={onClick}>Re-render</AntButton>
-    </CustomLayout>
+    </LayoutHooks>
   )
 }
 

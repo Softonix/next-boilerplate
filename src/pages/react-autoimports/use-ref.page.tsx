@@ -9,7 +9,7 @@ export default function Main () {
     }
   }
   return (
-    <CustomLayout>
+    <LayoutHooks>
       <div>
         <AntButton onClick={handleBtnClick}>Focus and Populate Text Field</AntButton>
       </div>
@@ -22,10 +22,10 @@ export default function Main () {
           padding: '1em'
         }}
       >
-        The AntInput box below will be focused and populated with some text
+        The Input box below will be focused and populated with some text
         (imperatively) upon clicking the AntButton above.
       </label>
       <textarea ref={textAreaEl} id="story" rows={5} cols={33} />
-    </CustomLayout>
+    </LayoutHooks>
   )
 }

@@ -14,13 +14,13 @@ export default function Main () {
     })
   }
   return (
-    <CustomLayout>
+    <LayoutHooks>
       <AntInput type="text" value={textInput} onChange={handleChange} />
       {isPending
         ? 'Loading'
         : listItems.map((item, ind) => {
           return <p key={ind}>{item}</p>
         })}
-    </CustomLayout>
+    </LayoutHooks>
   )
 }

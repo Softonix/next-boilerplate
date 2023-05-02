@@ -76,6 +76,7 @@ export const CounterProvider = ({
 }: TChildrenType & TStateType): ReactElement => {
   return (
     <CounterContext.Provider value={useCounterContext(initState)}>
+      {children}
     </CounterContext.Provider >
   )
 }
