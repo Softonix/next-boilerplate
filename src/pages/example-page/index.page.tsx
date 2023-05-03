@@ -38,6 +38,10 @@ const ExamplePage: FC = () => {
 
   return (
     <>
+      <NextHead>
+        <title>Example page</title>
+      </NextHead>
+
       {/* It's recommended to use top level registration instead of message static method,
        because static method cannot consume context,
        and ConfigProvider data will not work.
