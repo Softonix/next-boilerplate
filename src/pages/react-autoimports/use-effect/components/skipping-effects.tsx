@@ -19,6 +19,7 @@ export const SkippingEffects = () => {
       >
         Generate random number!
       </AntButton>
+
       <div>
         {effectLogs.map((effect, index) => (
           <div key={index}>{'🍔'.repeat(index) + effect}</div>

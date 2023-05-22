@@ -18,6 +18,7 @@ export default function useContextPage () {
 const Counter = () => {
   const { text, handleTextInput } = useCounterText()
   const { count, increment, decrement } = useCounter()
+
   return (
     <>
       <h1>Current Count: {count}</h1>

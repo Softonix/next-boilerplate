@@ -7,6 +7,7 @@ export default function UseRefPage () {
       textAreaEl.current.focus()
     }
   }
+
   return (
     <LayoutHooks>
       <div>

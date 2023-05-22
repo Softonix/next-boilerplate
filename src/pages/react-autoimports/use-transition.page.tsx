@@ -13,6 +13,7 @@ export default function UseTransitionPage () {
       setListItems(list)
     })
   }
+
   return (
     <LayoutHooks>
       <AntInput type='text' value={textInput} onChange={handleChange} />
@@ -20,7 +21,8 @@ export default function UseTransitionPage () {
         ? 'Loading'
         : listItems.map((item, ind) => {
           return <p key={ind}>{item}</p>
-        })}
+        })
+      }
     </LayoutHooks>
   )
 }

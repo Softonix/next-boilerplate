@@ -14,26 +14,28 @@ export default function UseStatePage () {
     setCount(count + 1)
     setCount(count + 1)
   }
+
   return (
     <LayoutHooks>
       <p>Count value is: {count}</p>
       <AntButton onClick={() => setCount(0)}>Reset</AntButton>
-      <AntButton
-        onClick={() => setCount(prevCount => prevCount + 1)}>
+
+      <AntButton onClick={() => setCount(prevCount => prevCount + 1)}>
         Plus (+)
       </AntButton>
-      <AntButton
-        onClick={() => setCount(prevCount => prevCount - 1)}>
-       Minus (-)
+
+      <AntButton onClick={() => setCount(prevCount => prevCount - 1)}>
+        Minus (-)
       </AntButton>
-      <AntButton
-        onClick={multipleIncrement}>
-       Good multiple +
+
+      <AntButton onClick={multipleIncrement}>
+        Good multiple +
       </AntButton>
-      <AntButton
-        onClick={multipleIncrementBad}>
+
+      <AntButton onClick={multipleIncrementBad}>
        Bad multiple +
       </AntButton>
+
     </LayoutHooks>
   )
 }

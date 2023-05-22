@@ -36,13 +36,15 @@ const routes: {path: string; label: string}[] = [
 
 export const LayoutHooks = ({ children }: {children?: ReactNode}) => {
   const router = useRouter()
-  const [current, setCurrentKey] = useState(router.asPath.split('react-autoimports/')[1] || '')
+  const [currentPage, setCurrentPageKey] = useState(router.asPath.split('react-autoimports/')[1] || '')
   const items: MenuProps['items'] = routes
     .map((r) => getItem(r.label, r.path,
-      (e) => { router.push(`/react-autoimports/${e.key}`); setCurrentKey(e.key as string) }))
+      (e) => { router.push(`/react-autoimports/${e.key}`); setCurrentPageKey(e.key as string) }))
 
-  return (<>
-    <AntMenu items={items} selectedKeys={[current]}/>
-    <>{children}</>
-  </>)
+  return (
+    <>
+      <AntMenu items={items} selectedKeys={[currentPage]}/>
+      <>{children}</>
+    </>
+  )
 }

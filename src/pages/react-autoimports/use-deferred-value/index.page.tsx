@@ -5,15 +5,13 @@ export default function useDeferredValuePage () {
   const deferredText = useDeferredValue<string>(text)
 
   return (
-    <>
-      <LayoutHooks>
-        <AntInput
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder='type fast'
-        />
-        <SlowList text={deferredText} />
-      </LayoutHooks>
-    </>
+    <LayoutHooks>
+      <AntInput
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder='type fast'
+      />
+      <SlowList text={deferredText} />
+    </LayoutHooks>
   )
 }
