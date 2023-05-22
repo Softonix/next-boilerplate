@@ -1,6 +1,11 @@
-import { CounterProvider, initState, useCounter, useCounterText } from './CounterContext'
+import {
+  CounterProvider,
+  initState,
+  useCounter,
+  useCounterText
+} from './CounterContext'
 
-export default function Main () {
+export default function useContextPage () {
   return (
     <LayoutHooks>
       <CounterProvider count={initState.count} text={initState.text}>
@@ -20,7 +25,7 @@ const Counter = () => {
         <AntButton onClick={increment}>Increment</AntButton>
         <AntButton onClick={decrement}>Decrement</AntButton>
       </div>
-      <AntInput type="text" onChange={handleTextInput} />
+      <AntInput type='text' onChange={handleTextInput} />
       <h2>{text}</h2>
     </>
   )

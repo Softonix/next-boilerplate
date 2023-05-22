@@ -1,4 +1,4 @@
-export default function Main () {
+export default function UseLayoutEffectPage () {
   const [randomNumber, setRandomNumber] = useState(0)
   const [effectLogs, setEffectLogs] = useState<(number | string)[]>([])
 

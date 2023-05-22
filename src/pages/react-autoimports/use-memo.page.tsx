@@ -1,4 +1,4 @@
-export default function Main () {
+export default function UseMemoPage () {
   const [number, setNumber] = useState(1)
   const [inc, setInc] = useState(0)
 

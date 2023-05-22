@@ -1,4 +1,4 @@
-export default function Main () {
+export default function UseTransitionPage () {
   const [isPending, startTransition] = useTransition()
   const [textInput, setTextInput] = useState('')
   const [listItems, setListItems] = useState<string[]>([])
@@ -15,7 +15,7 @@ export default function Main () {
   }
   return (
     <LayoutHooks>
-      <AntInput type="text" value={textInput} onChange={handleChange} />
+      <AntInput type='text' value={textInput} onChange={handleChange} />
       {isPending
         ? 'Loading'
         : listItems.map((item, ind) => {

@@ -1,5 +1,5 @@
 
-export default function Main () {
+export default function UseStatePage () {
   const [count, setCount] = useState(0)
 
   const multipleIncrement = () => {

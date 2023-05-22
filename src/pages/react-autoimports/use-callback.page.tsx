@@ -1,4 +1,4 @@
-export default function Main () {
+export default function UseCallbackPage () {
   const [age, setAge] = useState(99)
   const handleClick = () => setAge(age + 1)
   const someValue = 'someValue'

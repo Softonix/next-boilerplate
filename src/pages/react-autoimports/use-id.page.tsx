@@ -1,4 +1,4 @@
-export default function Main () {
+export default function UseIdPage () {
   const id = useId()
   const [uniqueId, setUniqueId] = useState('')
   const handleUniqueId = (event: React.ChangeEvent<HTMLInputElement>) => {

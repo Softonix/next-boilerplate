@@ -10,7 +10,7 @@ const CustomInput = forwardRef(({ status }: {status: string}, ref: Ref<InputRef>
   )
 })
 
-export default function Main () {
+export default function ForwardRefPage () {
   const ref = useRef<InputRef>(null)
 
   const doSomething = () => {

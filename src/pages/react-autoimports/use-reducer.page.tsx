@@ -14,7 +14,7 @@ const reducer = (
   }
 }
 
-export default function Main () {
+export default function UseReducerPage () {
   const [state, dispatch] = useReducer(reducer, initialState)
   return (
     <LayoutHooks>
