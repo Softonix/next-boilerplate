@@ -89,6 +89,7 @@
     "NextMain": true,
     "NextScript": true,
     "SkippingEffects": true,
+    "SlowText": true,
     "createRef": true,
     "exampleGeneralService": true,
     "exampleViewService": true,

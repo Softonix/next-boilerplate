@@ -89,6 +89,7 @@ declare global {
   const NextMain: typeof import('next/document')['Main']
   const NextScript: typeof import('next/document')['NextScript']
   const SkippingEffects: typeof import('../src/pages/react-autoimports/use-effect/components/skipping-effects')['SkippingEffects']
+  const SlowText: typeof import('../src/pages/react-autoimports/use-deferred-value-example/components/SlowText')['default']
   const createRef: typeof import('react')['createRef']
   const exampleGeneralService: typeof import('../src/services/example-general.service')['exampleGeneralService']
   const exampleViewService: typeof import('../src/pages/example-page/example-view.service')['exampleViewService']

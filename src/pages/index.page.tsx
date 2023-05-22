@@ -8,5 +8,10 @@ export default function Home () {
       className="ml-4"
       onClick={() => router.push('/example-page')}
     >To ExamplePage</AntButton>
+    <AntButton
+      type="primary"
+      className="ml-4"
+      onClick={() => router.push('/react-autoimports')}
+    >To ReactHooksPage </AntButton>
   </>
 }

@@ -27,6 +27,7 @@ const routes: {path: string; label: string}[] = [
   { path: 'use-callback', label: 'useCallback' },
   { path: 'use-memo', label: 'useMemo' },
   { path: 'use-deferred-value', label: 'useDeferredValue' },
+  { path: 'use-deferred-value-example', label: 'useDeferredValueExample' },
   { path: 'use-id', label: 'useId' },
   { path: 'use-reducer', label: 'useReducer' },
   { path: 'use-ref', label: 'useRef' },

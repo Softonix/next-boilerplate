@@ -8,13 +8,13 @@ export default function Main () {
     setNumber(Number(event.target.value))
   }
 
-  const onClick = () => setInc(i => i + 1)
-  console.log(inc)
+  const onClick = () => setInc((i) => i + 1)
+  console.log('number of render --->>>', inc)
 
   return (
     <LayoutHooks>
       Factorial of
-      <AntInput type="number" value={number} onChange={onChange} />
+      <AntInput type='number' value={number} onChange={onChange} />
       is {factorial}
       <AntButton onClick={onClick}>Re-render</AntButton>
     </LayoutHooks>
