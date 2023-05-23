@@ -1,11 +1,11 @@
 
 export default function useEffectPage () {
   return (
-    <CustomLayout>
+    <LayoutHooks>
       <BasicEffect />
       <EffectCleanup />
       <MultipleEffects />
       <SkippingEffects />
-    </CustomLayout>
+    </LayoutHooks>
   )
 }

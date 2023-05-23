@@ -1,9 +1,19 @@
-export default function Main () {
+export default function UseIdPage () {
   const id = useId()
+  const [uniqueId, setUniqueId] = useState('')
+  const handleUniqueId = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUniqueId(event.target.value + id)
+  }
+
   return (
-    <CustomLayout>
-      <label htmlFor={id} />
-      <AntInput type="text" id={id}/>
-    </CustomLayout>
+    <LayoutHooks>
+      <AntInput
+        type='text'
+        id={id}
+        onChange={handleUniqueId}
+        placeholder='Enter prefix to your unique id'
+      />
+      <div>Your unique id with prefix: {uniqueId}</div>
+    </LayoutHooks>
   )
 }

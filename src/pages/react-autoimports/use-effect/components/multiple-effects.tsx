@@ -14,7 +14,9 @@ export const MultipleEffects = () => {
     console.log('another useEffect call')
   })
 
-  return <div>
-    Check your console logs
-  </div>
+  return (
+    <div>
+      Check your console logs
+    </div>
+  )
 }

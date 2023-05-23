@@ -1,31 +1,32 @@
-import { ReactNode } from 'react'
-import { CounterProvider, initState, useCounter, useCounterText } from './CounterContext'
+import {
+  CounterProvider,
+  initState,
+  useCounter,
+  useCounterText
+} from './CounterContext'
 
-type TChildrenType = {
-  children: (num: number) => ReactNode
-}
-
-export default function Main () {
+export default function useContextPage () {
   return (
-    <CustomLayout>
+    <LayoutHooks>
       <CounterProvider count={initState.count} text={initState.text}>
-        <><Counter>{(num) => <>Current Count: {num}</>}</Counter></>
+        <Counter />
       </CounterProvider>
-    </CustomLayout>
+    </LayoutHooks>
   )
 }
 
-const Counter = ({ children }: TChildrenType) => {
+const Counter = () => {
   const { text, handleTextInput } = useCounterText()
   const { count, increment, decrement } = useCounter()
+
   return (
     <>
-      <h1>{children(count)}</h1>
+      <h1>Current Count: {count}</h1>
       <div>
         <AntButton onClick={increment}>Increment</AntButton>
         <AntButton onClick={decrement}>Decrement</AntButton>
       </div>
-      <AntInput type="text" onChange={handleTextInput} />
+      <AntInput type='text' onChange={handleTextInput} />
       <h2>{text}</h2>
     </>
   )

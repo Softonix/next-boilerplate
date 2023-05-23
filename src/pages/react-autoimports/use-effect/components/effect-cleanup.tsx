@@ -9,8 +9,10 @@ export const EffectCleanup = () => {
     }
   }, [])
 
-  return <div>
-    When you click the window you`ll
-    find a message logged to the console
-  </div>
+  return (
+    <div>
+      When you click the window you`ll
+      find a message logged to the console
+    </div>
+  )
 }

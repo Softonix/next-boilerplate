@@ -1,4 +1,4 @@
-export default function Main () {
+export default function UseCallbackPage () {
   const [age, setAge] = useState(99)
   const handleClick = () => setAge(age + 1)
   const someValue = 'someValue'
@@ -7,20 +7,20 @@ export default function Main () {
   }, [someValue])
 
   return (
-    <CustomLayout>
+    <LayoutHooks>
       <Age age={age} handleClick={handleClick} />
       <Instructions doSomething={doSomething} />
-    </CustomLayout>
+    </LayoutHooks>
   )
 }
 
 const Age = ({ age, handleClick }: {age: number; handleClick: () => void}) => {
   return (
     <div>
-      <div style={{ border: '2px', background: 'papayawhip', padding: '1rem' }}>
+      <div>
         Today I am {age} Years of Age
       </div>
-      <pre> - click the AntButton below 👇 </pre>
+      <pre> - click the Button below 👇 </pre>
       <AntButton onClick={handleClick}>Get older! </AntButton>
     </div>
   )

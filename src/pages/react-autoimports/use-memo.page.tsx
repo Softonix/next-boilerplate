@@ -1,4 +1,4 @@
-export default function Main () {
+export default function UseMemoPage () {
   const [number, setNumber] = useState(1)
   const [inc, setInc] = useState(0)
 
@@ -8,15 +8,16 @@ export default function Main () {
     setNumber(Number(event.target.value))
   }
 
-  const onClick = () => setInc(i => i + 1)
+  const onClick = () => setInc((i) => i + 1)
+  console.log('number of render --->>>', inc)
 
   return (
-    <CustomLayout>
+    <LayoutHooks>
       Factorial of
-      <AntInput type="number" value={number} onChange={onChange} />
+      <AntInput type='number' value={number} onChange={onChange} />
       is {factorial}
       <AntButton onClick={onClick}>Re-render</AntButton>
-    </CustomLayout>
+    </LayoutHooks>
   )
 }
 

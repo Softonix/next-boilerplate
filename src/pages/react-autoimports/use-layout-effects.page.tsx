@@ -1,4 +1,4 @@
-export default function Main () {
+export default function UseLayoutEffectPage () {
   const [randomNumber, setRandomNumber] = useState(0)
   const [effectLogs, setEffectLogs] = useState<(number | string)[]>([])
 
@@ -10,7 +10,7 @@ export default function Main () {
   )
 
   return (
-    <CustomLayout>
+    <LayoutHooks>
       <h1>{randomNumber}</h1>
       <AntButton
         onClick={() => {
@@ -24,6 +24,6 @@ export default function Main () {
           <div key={index}>{'🍔'.repeat(index) + effect}</div>
         ))}
       </div>
-    </CustomLayout>
+    </LayoutHooks>
   )
 }
