@@ -4,11 +4,18 @@ module.exports = [
     'next/image': [['default', 'NextImage']],
     'next/router': ['useRouter', 'withRouter'],
     'next/document': [
-      'NextScript',
+      ['NextScript', 'NextDocumentScript'],
+      ['Html', 'NextDocumentHtml'],
       ['Document', 'NextDocument'],
-      ['Html', 'NextHtml'],
-      ['Head', 'NextHead'],
-      ['Main', 'NextMain']
+      ['Html', 'NextDocumentHtml'],
+      ['Head', 'NextDocumentHead'],
+      ['Main', 'NextDocumentMain']
+    ],
+    'next/head': [
+      ['default', 'NextHead']
+    ],
+    'next/script': [
+      ['default', 'NextScript']
     ]
   },
   {

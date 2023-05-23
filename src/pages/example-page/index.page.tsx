@@ -9,7 +9,7 @@ const ExamplePage: FC = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  const [messageApi, contextHolder] = AntMessage.useMessage()
+  const [messageApi, AntContextHolder] = AntMessage.useMessage()
   function showMessage () {
     messageApi.open({
       content: 'Hello, Ant Design!',
@@ -38,11 +38,15 @@ const ExamplePage: FC = () => {
 
   return (
     <>
+      <NextHead>
+        <title>Example page</title>
+      </NextHead>
+
       {/* It's recommended to use top level registration instead of message static method,
        because static method cannot consume context,
        and ConfigProvider data will not work.
        */}
-      {contextHolder}
+      {AntContextHolder}
       <div className="flex min-h-screen flex-col items-center p-24">
         <div className='flex items-center gap-4 mb-5'>
           <IconCar className='text-red-500' />

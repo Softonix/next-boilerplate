@@ -13,13 +13,13 @@ export default class AppDocument extends Document {
 
   render () {
     return (
-      <NextHtml lang='en'>
-        <NextHead />
+      <NextDocumentHtml lang='en'>
+        <NextDocumentHead />
         <body>
-          <NextMain />
-          <NextScript />
+          <NextDocumentMain />
+          <NextDocumentScript />
         </body>
-      </NextHtml>
+      </NextDocumentHtml>
     )
   }
 }
