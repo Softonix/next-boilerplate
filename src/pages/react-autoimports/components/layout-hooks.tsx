@@ -19,7 +19,7 @@ function getItem (
   } as MenuItemType
 }
 
-const routes: {path: string; label: string}[] = [
+const routes: { path: string; label: string }[] = [
   { path: 'use-state', label: 'useState' },
   { path: 'use-context', label: 'useContext' },
   { path: 'use-effect', label: 'useEffect' },
@@ -34,17 +34,24 @@ const routes: {path: string; label: string}[] = [
   { path: 'forward-ref', label: 'forwardRef' }
 ]
 
-export const LayoutHooks = ({ children }: {children?: ReactNode}) => {
+export const LayoutHooks = ({ children }: { children?: ReactNode }) => {
   const router = useRouter()
-  const [currentPage, setCurrentPageKey] = useState(router.asPath.split('react-autoimports/')[1] || '')
-  const items: MenuProps['items'] = routes
-    .map((r) => getItem(r.label, r.path,
-      (e) => { router.push(`/react-autoimports/${e.key}`); setCurrentPageKey(e.key as string) }))
+  const [currentPage, setCurrentPageKey] = useState(
+    router.asPath.split('react-autoimports/')[1] || ''
+  )
+  const items: MenuProps['items'] = routes.map((r) =>
+    getItem(r.label, r.path, (e) => {
+      router.push(`/react-autoimports/${e.key}`)
+      setCurrentPageKey(e.key as string)
+    })
+  )
 
   return (
     <>
-      <AntMenu items={items} selectedKeys={[currentPage]}/>
-      <>{children}</>
+      <Layout>
+        <AntMenu items={items} selectedKeys={[currentPage]} />
+        <>{children}</>
+      </Layout>
     </>
   )
 }

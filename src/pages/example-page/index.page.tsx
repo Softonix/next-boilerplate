@@ -20,7 +20,9 @@ const ExamplePage: FC = () => {
 
   const [loading, setLoading] = useState(false)
 
-  const [exampleData, setExampleData] = useState<IExampleInterface | undefined>()
+  const [exampleData, setExampleData] = useState<
+  IExampleInterface | undefined
+  >()
   async function getExampleData () {
     try {
       setLoading(true)
@@ -47,60 +49,64 @@ const ExamplePage: FC = () => {
        and ConfigProvider data will not work.
        */}
       {AntContextHolder}
-      <div className="flex min-h-screen flex-col items-center p-24">
-        <div className='flex items-center gap-4 mb-5'>
-          <IconCar className='text-red-500' />
-          <IconCart className='text-green-500 hover:text-red-500' />
-        </div>
+      <Layout>
+        <div className='flex min-h-screen flex-col items-center p-24'>
+          <div className='flex items-center gap-4 mb-5'>
+            <IconCar className='text-red-500' />
+            <IconCart className='text-green-500 hover:text-red-500' />
+          </div>
 
-        <AntDatePicker />
+          <AntDatePicker />
 
-        <AntButton type="primary" className='mt-5' onClick={showMessage}>
-          Display message
-        </AntButton>
+          <AntButton type='primary' className='mt-5' onClick={showMessage}>
+            Display message
+          </AntButton>
 
-        <AntButton
-          type="primary"
-          className='mt-5'
-          danger
-          onClick={() => setIsModalOpen(true)}
-        >
-          Open Modal
-        </AntButton>
+          <AntButton
+            type='primary'
+            className='mt-5'
+            danger
+            onClick={() => setIsModalOpen(true)}
+          >
+            Open Modal
+          </AntButton>
 
-        <AntModal
-          title="Basic Modal"
-          open={isModalOpen}
-          onOk={() => setIsModalOpen(false)}
-          onCancel={() => setIsModalOpen(false)}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </AntModal>
+          <AntModal
+            title='Basic Modal'
+            open={isModalOpen}
+            onOk={() => setIsModalOpen(false)}
+            onCancel={() => setIsModalOpen(false)}
+          >
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+            <p>Some contents...</p>
+          </AntModal>
 
-        <div className="mt-5">
-          <AntSpin spinning={loading}>
-            <AntAlert
-              message="Alert message title"
-              description={JSON.stringify(exampleData) ?? 'Loading'}
-              type="info"
-            />
-          </AntSpin>
-          <div className="mt-5">
-            Loading state：
-            <AntSwitch checked={loading} onChange={(checked => setLoading(checked))} />
+          <div className='mt-5'>
+            <AntSpin spinning={loading}>
+              <AntAlert
+                message='Alert message title'
+                description={JSON.stringify(exampleData) ?? 'Loading'}
+                type='info'
+              />
+            </AntSpin>
+            <div className='mt-5'>
+              Loading state：
+              <AntSwitch
+                checked={loading}
+                onChange={(checked) => setLoading(checked)}
+              />
+            </div>
+          </div>
+
+          <div className='mt-5'>
+            {test} <br />
+            {computedTest} <br />
+            <AntButton onClick={() => setTest(test + 1)}>increment</AntButton>
+            <ExamplePageComponent />
           </div>
         </div>
-
-        <div className="mt-5">
-          {test} <br />
-          {computedTest} <br />
-          <AntButton onClick={() => setTest(test + 1)}>increment</AntButton>
-
-          <ExamplePageComponent />
-        </div>
-      </div>
+      </Layout>
     </>
   )
 }

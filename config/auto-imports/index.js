@@ -26,6 +26,9 @@ const AutoImportsPlugin = () => AutoImports({
       imports: ['FC'],
       type: true
     },
+    {
+      zod: ['z']
+    },
     AntImports,
     ...IconsImports(),
     ...NextImports

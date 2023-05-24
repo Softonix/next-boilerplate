@@ -9,6 +9,9 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js', 'api.ts'],
   transpilePackages: ['antd'],
+  images: {
+    domains: ['lh3.googleusercontent.com', 'test-upload-picture-buckjet.s3.eu-north-1.amazonaws.com']
+  },
   webpack: (config) => {
     config.plugins.push(AutoImportsPlugin())
     config.plugins.push(IconsPluginCustom())
