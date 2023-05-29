@@ -2,7 +2,7 @@ import { getSession } from 'next-auth/react'
 import { NextResponse } from 'next/server'
 import { NextApiRequest } from 'next'
 
-export default async function stripeMiddleware (req: NextApiRequest) {
+export default async function authMiddleware (req: NextApiRequest) {
   const requestForNextAuth = {
     headers: {
       cookie: req?.headers?.get('cookie')
@@ -28,4 +28,4 @@ export default async function stripeMiddleware (req: NextApiRequest) {
   }
 }
 
-export const config = { matcher: ['/', '/post/:path*', '/folder/:path*'] }
+export const config = { matcher: ['/', '/task/:path*'] }

@@ -4,7 +4,7 @@ const Registration = () => {
   const { data: sessionData } = useSession()
 
   const router = useRouter()
-  const updateUser = trpc.updateuser.useMutation()
+  const updateUser = trpc.updateUser.useMutation()
 
   useEffect(() => {
     if (!sessionData) {

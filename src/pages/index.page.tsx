@@ -29,6 +29,13 @@ export default function Home () {
             >
               To ReactHooksPage{' '}
             </AntButton>
+            <AntButton
+              type='primary'
+              className='ml-4'
+              onClick={() => router.push('/to-do-list')}
+            >
+              To Todo list{' '}
+            </AntButton>
           </>
         )}
       </Layout>
