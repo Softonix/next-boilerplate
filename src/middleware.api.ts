@@ -28,4 +28,6 @@ export default async function authMiddleware (req: NextApiRequest) {
   }
 }
 
-export const config = { matcher: ['/', '/example-page', '/react-autoimports/:path*', '/task/:path*'] }
+export const config = {
+  matcher: ['/', '/example-page', '/react-autoimports/:path*', '/to-do-list/:path*']
+}
