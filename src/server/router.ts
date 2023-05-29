@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { procedure, protectedProcedure, router } from './trpc'
 
 export const appRouter = router({
-  createUser: procedure
+  createUser: protectedProcedure
     .input(
       z.object({
         email: z.string()
@@ -13,10 +13,10 @@ export const appRouter = router({
         data: { email: input.email }
       })
     }),
-  getUsers: procedure.query(async ({ ctx }) => {
+  getUsers: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.user.findMany()
   }),
-  updateUser: procedure.input(
+  updateUser: protectedProcedure.input(
     registrationFromSchema
   ).mutation(
     async ({
@@ -48,7 +48,7 @@ export const appRouter = router({
       })
     }
   ),
-  allTasks: procedure.query(
+  allTasks: protectedProcedure.query(
     async ({ ctx: { prisma, session } }) => {
       const tasks = await prisma.toDoRecord.findMany({
         where: { userId: session?.user?.id }
@@ -57,7 +57,7 @@ export const appRouter = router({
       return tasks || []
     }
   ),
-  updateTask: procedure.input(z.object({
+  updateTask: protectedProcedure.input(z.object({
     id: z.number(),
     body: z.string().optional(),
     completed: z.boolean().optional()
@@ -81,7 +81,7 @@ export const appRouter = router({
       return updatedTask
     }
   ),
-  taskById: procedure.input(z.string()).query(
+  taskById: protectedProcedure.input(z.string()).query(
     async ({ ctx: { prisma }, input }) => {
       try {
         const task = await prisma.toDoRecord.findUnique({ where: { id: parseInt(input) } })
@@ -92,7 +92,7 @@ export const appRouter = router({
       }
     }
   ),
-  deleteTask: procedure.input(z.number()).mutation(
+  deleteTask: protectedProcedure.input(z.number()).mutation(
     async ({ ctx: { prisma, session }, input }) => {
       const deletedTask = await prisma.toDoRecord.deleteMany({
         where: {
