@@ -17,7 +17,7 @@ export default async function authMiddleware (req: NextApiRequest) {
   const isAuthenticated = session?.user?.email
   const redirectUrl = req.nextUrl.clone()
 
-  if (!isAuthenticated && !['/', '/registration', '/signin', '/pricing'].includes(req.nextUrl.pathname)) {
+  if (!isAuthenticated && !['/', '/registration'].includes(req.nextUrl.pathname)) {
     redirectUrl.pathname = '/'
     return NextResponse.redirect(redirectUrl)
   }
@@ -28,4 +28,4 @@ export default async function authMiddleware (req: NextApiRequest) {
   }
 }
 
-export const config = { matcher: ['/', '/task/:path*'] }
+export const config = { matcher: ['/', '/example-page', '/react-autoimports/:path*', '/task/:path*'] }
