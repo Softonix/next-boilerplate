@@ -12,6 +12,7 @@ const Signin = ({
       <NextHead>
         <title>Sign in</title>
       </NextHead>
+
       <div className='flex min-h-screen items-center justify-center overflow-x-hidden'>
         <div>
           {Object.values(providers).map((provider: any) => (

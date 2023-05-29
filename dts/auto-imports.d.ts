@@ -74,11 +74,16 @@ declare global {
   const AntUpload: typeof import('antd')['Upload']
   const AntVersion: typeof import('antd')['version']
   const AntWatermark: typeof import('antd')['Watermark']
+  const AuthShowcase: typeof import('../src/components/AuthShowcase')['default']
   const BasicEffect: typeof import('../src/pages/react-autoimports/use-effect/components/basic-effect')['BasicEffect']
+  const CreateTask: typeof import('../src/pages/to-do-list/components/CreateTask')['default']
+  const EditTask: typeof import('../src/pages/to-do-list/components/EditTask')['default']
   const EffectCleanup: typeof import('../src/pages/react-autoimports/use-effect/components/effect-cleanup')['EffectCleanup']
   const ExamplePageComponent: typeof import('../src/pages/example-page/components/ExamplePageComponent')['ExamplePageComponent']
+  const Header: typeof import('../src/components/Header')['default']
   const IconCar: typeof import('~icons/icon/car.jsx')['default']
   const IconCart: typeof import('~icons/icon/cart.jsx')['default']
+  const Layout: typeof import('../src/components/Layout')['default']
   const LayoutHooks: typeof import('../src/pages/react-autoimports/components/layout-hooks')['LayoutHooks']
   const MultipleEffects: typeof import('../src/pages/react-autoimports/use-effect/components/multiple-effects')['MultipleEffects']
   const NextDocument: typeof import('next/document')['Document']
@@ -90,14 +95,24 @@ declare global {
   const NextImage: typeof import('next/image')['default']
   const NextLink: typeof import('next/link')['default']
   const NextScript: typeof import('next/script')['default']
+  const RegistrationForm: typeof import('../src/components/RegistrationForm')['default']
   const SkippingEffects: typeof import('../src/pages/react-autoimports/use-effect/components/skipping-effects')['SkippingEffects']
   const SlowText: typeof import('../src/pages/react-autoimports/use-deferred-value/components/SlowText')['default']
+  const Task: typeof import('../src/pages/to-do-list/components/Task')['default']
+  const TaskList: typeof import('../src/pages/to-do-list/components/TaskList')['default']
+  const confirmationModal: typeof import('../src/components/ConfirmationModal')['confirmationModal']
   const createRef: typeof import('react')['createRef']
+  const editTaskSchema: typeof import('../src/pages/to-do-list/components/EditTask')['editTaskSchema']
   const exampleGeneralService: typeof import('../src/services/example-general.service')['exampleGeneralService']
   const exampleViewService: typeof import('../src/pages/example-page/example-view.service')['exampleViewService']
   const forwardRef: typeof import('react')['forwardRef']
+  const getProviders: typeof import('next-auth/react')['getProviders']
+  const getServerSession: typeof import('next-auth/next')['getServerSession']
   const lazy: typeof import('react')['lazy']
   const memo: typeof import('react')['memo']
+  const registrationFromSchema: typeof import('../src/components/RegistrationForm')['registrationFromSchema']
+  const signIn: typeof import('next-auth/react')['signIn']
+  const signOut: typeof import('next-auth/react')['signOut']
   const startTransition: typeof import('react')['startTransition']
   const useCallback: typeof import('react')['useCallback']
   const useContext: typeof import('react')['useContext']
@@ -112,11 +127,13 @@ declare global {
   const useReducer: typeof import('react')['useReducer']
   const useRef: typeof import('react')['useRef']
   const useRouter: typeof import('next/router')['useRouter']
+  const useSession: typeof import('next-auth/react')['useSession']
   const useState: typeof import('react')['useState']
   const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
   const useTransition: typeof import('react')['useTransition']
   const useTranslation: typeof import('react-i18next')['useTranslation']
   const withRouter: typeof import('next/router')['withRouter']
+  const z: typeof import('zod')['z']
 }
 // for type re-export
 declare global {
@@ -124,6 +141,8 @@ declare global {
   export type { FC } from 'react'
   // @ts-ignore
   export type { AppContext as NextAppContext, AppProps as NextAppProps } from 'next/app'
+  // @ts-ignore
+  export type { default as NextPage, GetServerSidePropsContext, InferGetServerSidePropsType } from 'next'
   // @ts-ignore
   export type { DocumentContext as NextDocumentContext } from 'next/document'
 }

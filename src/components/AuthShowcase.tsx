@@ -1,10 +1,10 @@
-import { useSession } from 'next-auth/react'
-
-const AuthShowcase: React.FC = () => {
+const AuthShowcase: React.FC = (props: { className: string }) => {
   const { data: sessionData } = useSession()
 
+  const { className = '' } = props
+
   return (
-    <div className='flex items-center space-x-2'>
+    <div className={ `flex items-center space-x-2 ${className}` }>
       {sessionData?.user?.image && (
         <NextImage
           src={sessionData.user.image}
