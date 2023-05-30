@@ -3,8 +3,6 @@ import { NextResponse } from 'next/server'
 import { NextApiRequest } from 'next'
 
 export default async function authMiddleware (req: NextApiRequest) {
-  console.log('hurra')
-
   const requestForNextAuth = {
     headers: {
       cookie: req?.headers?.get('cookie')

@@ -39,6 +39,16 @@ CREATE TABLE "verificationtokens" (
 
 -- RedefineTables
 PRAGMA foreign_keys=OFF;
+CREATE TABLE "new_ToDoRecord" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "userId" TEXT NOT NULL,
+    "completed" BOOLEAN DEFAULT false,
+    "body" TEXT NOT NULL,
+    CONSTRAINT "ToDoRecord_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+INSERT INTO "new_ToDoRecord" ("body", "id", "userId") SELECT "body", "id", "userId" FROM "ToDoRecord";
+DROP TABLE "ToDoRecord";
+ALTER TABLE "new_ToDoRecord" RENAME TO "ToDoRecord";
 CREATE TABLE "new_User" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT,
@@ -57,16 +67,6 @@ INSERT INTO "new_User" ("email", "id") SELECT "email", "id" FROM "User";
 DROP TABLE "User";
 ALTER TABLE "new_User" RENAME TO "User";
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
-CREATE TABLE "new_ToDoRecord" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "userId" TEXT NOT NULL,
-    "completed" BOOLEAN DEFAULT false,
-    "body" TEXT NOT NULL,
-    CONSTRAINT "ToDoRecord_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
-);
-INSERT INTO "new_ToDoRecord" ("body", "id", "userId") SELECT "body", "id", "userId" FROM "ToDoRecord";
-DROP TABLE "ToDoRecord";
-ALTER TABLE "new_ToDoRecord" RENAME TO "ToDoRecord";
 PRAGMA foreign_key_check;
 PRAGMA foreign_keys=ON;
 

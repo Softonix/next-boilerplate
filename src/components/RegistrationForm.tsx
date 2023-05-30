@@ -2,6 +2,13 @@ import { useSession } from 'next-auth/react'
 
 interface RegistrationFormProps {
   onSubmit: (nickname: string, phone: string, city: string) => void
+  userFromDb: {
+    nickname: string
+    phone: string
+    city: string
+    image: string
+    name: string
+  }
 }
 
 type RegistrationFormType = {
@@ -16,7 +23,10 @@ export const registrationFromSchema = z.object({
   city: z.string().min(1).max(20)
 })
 
-const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSubmit }) => {
+const RegistrationForm: React.FC<RegistrationFormProps> = ({
+  onSubmit,
+  userFromDb
+}) => {
   const { data: sessionData } = useSession()
 
   const onFormSubmit = (data: RegistrationFormType) => {
@@ -50,6 +60,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSubmit }) => {
         <AntForm.Item
           label='Nickname'
           name='nickname'
+          initialValue={userFromDb?.nickname || ''}
           rules={[{ required: true, message: 'Please input your nickname!' }]}
           labelCol={{ span: 5, offset: 0 }}
           wrapperCol={{ offset: 0, span: 18 }}
@@ -59,6 +70,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSubmit }) => {
         <AntForm.Item
           label='Phone'
           name='phone'
+          initialValue={userFromDb?.phone || ''}
           rules={[{ required: true, message: 'Please input your phone!' }]}
           labelCol={{ span: 5, offset: 0 }}
           wrapperCol={{ span: 18 }}
@@ -68,6 +80,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSubmit }) => {
         <AntForm.Item
           label='City'
           name='city'
+          initialValue={userFromDb?.city || ''}
           rules={[{ required: true, message: 'Please input your city!' }]}
           labelCol={{ span: 5, offset: 0 }}
           wrapperCol={{ span: 18 }}
@@ -76,6 +89,11 @@ const RegistrationForm: React.FC<RegistrationFormProps> = ({ onSubmit }) => {
         </AntForm.Item>
         <AntForm.Item wrapperCol={{ offset: 1, span: 22 }}>
           <div className='flex justify-end gap-3'>
+            {userFromDb && (
+              <NextLink href='/'>
+                <AntButton>Cancel</AntButton>
+              </NextLink>
+            )}
             <AntButton type='primary' htmlType='submit'>
               Submit
             </AntButton>

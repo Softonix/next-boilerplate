@@ -1,5 +1,3 @@
-import { TodoContext } from '@/context/TodoContext'
-
 type TCreateTaskType = { body: string };
 
 const CreateTask = () => {
@@ -59,7 +57,9 @@ const CreateTask = () => {
             }}
           >
             <div className='flex justify-end gap-3'>
-              <AntButton href='/to-do-list'>Back</AntButton>
+              <NextLink href='/to-do-list'>
+                <AntButton>Back</AntButton>
+              </NextLink>
               <AntButton type='primary' htmlType='submit'>
                 Submit
               </AntButton>

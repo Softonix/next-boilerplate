@@ -1,7 +1,5 @@
-import { ToDoRecord } from '@prisma/client'
-
 interface ITaskProps {
-  task: ToDoRecord
+  task: PrismaToDoRecord
   onUpdate: (data: any) => void
   onDelete: (data: any) => void
 }

@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { procedure, protectedProcedure, router } from './trpc'
+import { protectedProcedure, router } from './trpc'
 
 export const appRouter = router({
   createUser: protectedProcedure
@@ -16,6 +16,17 @@ export const appRouter = router({
   getUsers: protectedProcedure.query(async ({ ctx }) => {
     return await ctx.prisma.user.findMany()
   }),
+  getUserById: protectedProcedure.input(z.string()).query(
+    async ({ ctx: { prisma }, input }) => {
+      try {
+        const user = await prisma.user.findUnique({ where: { id: input } })
+
+        return user
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  ),
   updateUser: protectedProcedure.input(
     registrationFromSchema
   ).mutation(
@@ -31,6 +42,7 @@ export const appRouter = router({
           city
         }
       })
+
       return updateduser
     }
   ),

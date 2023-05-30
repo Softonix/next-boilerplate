@@ -1,5 +1,3 @@
-import { useSession } from 'next-auth/react'
-
 export default function Home () {
   const router = useRouter()
   const { status } = useSession()

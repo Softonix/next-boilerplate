@@ -4,15 +4,17 @@ const AuthShowcase: React.FC = (props: { className: string }) => {
   const { className = '' } = props
 
   return (
-    <div className={ `flex items-center space-x-2 ${className}` }>
+    <div className={`flex items-center space-x-2 ${className}`}>
       {sessionData?.user?.image && (
-        <NextImage
-          src={sessionData.user.image}
-          alt='User profile'
-          className='mr-4 rounded-full'
-          width={32}
-          height={32}
-        />
+        <NextLink href='/registration'>
+          <NextImage
+            src={sessionData.user.image}
+            alt='User profile'
+            className='mr-4 rounded-full'
+            width={32}
+            height={32}
+          />
+        </NextLink>
       )}
       <AntButton
         type='primary'

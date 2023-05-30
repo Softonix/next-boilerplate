@@ -1,8 +1,5 @@
-import { TTaskContextType, TodoContext } from '@/context/TodoContext'
-import { ToDoRecord } from '@prisma/client'
-
 const EditTaskPage: NextPage = () => {
-  const [task, setTask] = useState<ToDoRecord>()
+  const [task, setTask] = useState<PrismaToDoRecord>()
   const [isLoading, setLoading] = useState(false)
 
   const router = useRouter()

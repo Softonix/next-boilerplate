@@ -1,18 +1,15 @@
-import { TodoContext } from '@/context/TodoContext'
-import { ToDoRecord } from '@prisma/client'
-
 const TaskList: React.FC = () => {
   const { tasks, updateTask, deleteTask } =
     useContext<TTaskContextType>(TodoContext)
 
-  const [filteredTasks, setFilteredTasks] = useState<ToDoRecord[]>(tasks)
+  const [filteredTasks, setFilteredTasks] = useState<PrismaToDoRecord[]>(tasks)
   const [status, setStatus] = useState('all')
 
   useEffect(() => {
     if (status === 'completed') {
-      setFilteredTasks(tasks.filter((t: ToDoRecord) => t?.completed))
+      setFilteredTasks(tasks.filter((t: PrismaToDoRecord) => t?.completed))
     } else if (status === 'uncompleted') {
-      setFilteredTasks(tasks.filter((t: ToDoRecord) => !t?.completed))
+      setFilteredTasks(tasks.filter((t: PrismaToDoRecord) => !t?.completed))
     } else {
       setFilteredTasks(tasks)
     }

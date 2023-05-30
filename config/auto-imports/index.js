@@ -10,8 +10,10 @@ const AutoImportsPlugin = () => AutoImports({
   dirs: [
     './src/components',
     './src/services',
+    './src/context',
     './src/pages/**/*.service.ts',
-    './src/pages/**/components'
+    './src/pages/**/components',
+    './config/trpc'
   ],
 
   eslintrc: {
@@ -28,6 +30,11 @@ const AutoImportsPlugin = () => AutoImports({
     },
     {
       zod: ['z']
+    },
+    {
+      from: '@prisma/client',
+      imports: [['User', 'PrismaUser'], ['ToDoRecord', 'PrismaToDoRecord']],
+      type: true
     },
     AntImports,
     ...IconsImports(),

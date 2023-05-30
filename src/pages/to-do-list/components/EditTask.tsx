@@ -1,5 +1,3 @@
-import { TTask } from '@/context/TodoContext'
-
 interface IEditTaskProps {
   task: TTask
   onUpdate: (body: string) => void
@@ -61,7 +59,9 @@ const EditTask: React.FC<IEditTaskProps> = ({ task, onUpdate, onDelete }) => {
           }}
         >
           <div className='flex justify-end gap-3'>
-            <AntButton href='/to-do-list'>Back</AntButton>
+            <NextLink href='/to-do-list'>
+              <AntButton>Back</AntButton>
+            </NextLink>
             <AntButton
               type='primary'
               onClick={() =>

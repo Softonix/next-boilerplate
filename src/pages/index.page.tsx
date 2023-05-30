@@ -10,8 +10,8 @@ export default function Home () {
   )
 }
 
-export function getServerSideProps () {
-  return {
-    redirect: { destination: '/example-page' }
-  }
-}
+// export function getServerSideProps () {
+//   return {
+//     redirect: { destination: '/example-page' }
+//   }
+// }
