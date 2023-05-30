@@ -3,15 +3,15 @@ export default function Home () {
     <>
       <Layout>
         <NextHead>
-          <title>test head</title>
+          <title>Test head</title>
         </NextHead>
       </Layout>
     </>
   )
 }
 
-// export function getServerSideProps () {
-//   return {
-//     redirect: { destination: '/example-page' }
-//   }
-// }
+export function getServerSideProps () {
+  return {
+    redirect: { destination: '/example-page' }
+  }
+}
