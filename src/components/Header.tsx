@@ -8,10 +8,8 @@ const Header = () => {
     <header className='flex items-center bg-gray-200 p-4'>
       {isAuthenticated && (
         <>
-          <NextLink href='/example-page'>To Example Page</NextLink>
           <AntButton
             type='primary'
-            className='ml-4'
             onClick={() => router.push('/example-page')}
           >
               To ExamplePage
