@@ -11,6 +11,9 @@ module.exports = [
       ['Head', 'NextDocumentHead'],
       ['Main', 'NextDocumentMain']
     ],
+    'next-auth/react': ['useSession', 'getProviders', 'signIn', 'signOut'],
+    'next-auth/next': ['getServerSession'],
+
     'next/head': [
       ['default', 'NextHead']
     ],
@@ -24,8 +27,14 @@ module.exports = [
     type: true
   },
   {
+    from: 'next',
+    imports: [['default', 'NextPage'], 'GetServerSidePropsContext', 'InferGetServerSidePropsType'],
+    type: true
+  },
+  {
     from: 'next/document',
     imports: [['DocumentContext', 'NextDocumentContext']],
     type: true
   }
+
 ]
