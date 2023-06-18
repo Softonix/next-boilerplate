@@ -100,6 +100,8 @@ declare global {
   const SlowText: typeof import('../src/pages/react-autoimports/use-deferred-value/components/SlowText')['default']
   const Task: typeof import('../src/pages/to-do-list/components/Task')['default']
   const TaskList: typeof import('../src/pages/to-do-list/components/TaskList')['default']
+  const TodoContext: typeof import('../src/context/TodoContext')['TodoContext']
+  const TodoContextProvider: typeof import('../src/context/TodoContext')['TodoContextProvider']
   const confirmationModal: typeof import('../src/components/ConfirmationModal')['confirmationModal']
   const createRef: typeof import('react')['createRef']
   const editTaskSchema: typeof import('../src/pages/to-do-list/components/EditTask')['editTaskSchema']
@@ -114,6 +116,7 @@ declare global {
   const signIn: typeof import('next-auth/react')['signIn']
   const signOut: typeof import('next-auth/react')['signOut']
   const startTransition: typeof import('react')['startTransition']
+  const trpc: typeof import('../config/trpc/trpc-hook')['trpc']
   const useCallback: typeof import('react')['useCallback']
   const useContext: typeof import('react')['useContext']
   const useDebugValue: typeof import('react')['useDebugValue']
@@ -139,6 +142,8 @@ declare global {
 declare global {
   // @ts-ignore
   export type { FC } from 'react'
+  // @ts-ignore
+  export type { User as PrismaUser, ToDoRecord as PrismaToDoRecord } from '@prisma/client'
   // @ts-ignore
   export type { AppContext as NextAppContext, AppProps as NextAppProps } from 'next/app'
   // @ts-ignore

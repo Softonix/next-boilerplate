@@ -48,7 +48,9 @@ const ExamplePage: FC = () => {
        because static method cannot consume context,
        and ConfigProvider data will not work.
        */}
+
       {AntContextHolder}
+
       <Layout>
         <div className='flex min-h-screen flex-col items-center p-24'>
           <div className='flex items-center gap-4 mb-5'>
