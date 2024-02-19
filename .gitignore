@@ -39,3 +39,7 @@ next-env.d.ts
 
 # Prisma sqlite db file
 dev.db*
+#ide, code editor
+.vscode
+.idea
+

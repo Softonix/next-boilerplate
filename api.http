@@ -1,7 +1,0 @@
-Install https://httpie.io/
-
-### Create user
-http POST localhost:3000/api/trpc/createUser content-type:application/json email=user12@test.com
-
-### Get users
-http localhost:3000/api/trpc/getUsers content-type:application/json

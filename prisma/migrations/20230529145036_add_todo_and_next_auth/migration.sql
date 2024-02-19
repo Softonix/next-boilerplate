@@ -55,6 +55,7 @@ CREATE TABLE "new_User" (
     "nickname" TEXT,
     "email" TEXT,
     "phone" TEXT,
+    "password" TEXT,
     "stripeCustomerId" TEXT,
     "stripeSubscriptionId" TEXT,
     "stripePlanId" TEXT,
