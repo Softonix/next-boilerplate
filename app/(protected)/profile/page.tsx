@@ -1,13 +1,15 @@
 import { auth } from '@/auth'
 
-const AuthShowcase: React.FC<{ className: string }> = async (props) => {
+const Profile: React.FC<{ className: string }> = async (props) => {
   const session = await auth()
 
   const { className = '' } = props
 
   return (
-    <div className={`flex items-center space-x-2 ${className}`}>
-      <Link href='/profile'>
+    <div className={className}>
+      <h1 className='font-bold text-2xl mb-4'>Profile</h1>
+
+      <div className='flex items-center space-x-2'>
         {session?.user?.image && (
           <NextImage
             src={session.user.image}
@@ -19,11 +21,9 @@ const AuthShowcase: React.FC<{ className: string }> = async (props) => {
         )}
 
         <p>{session?.user?.name}</p>
-      </Link>
-
-      <AuthButton session={session} />
+      </div>
     </div>
   )
 }
 
-export default AuthShowcase
+export default Profile

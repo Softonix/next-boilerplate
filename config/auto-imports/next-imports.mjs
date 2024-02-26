@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default [
   {
     'next/link': [['default', 'Link']],
@@ -11,9 +12,6 @@ export default [
       ['Head', 'NextDocumentHead'],
       ['Main', 'NextDocumentMain']
     ],
-    // 'next-(auth)/react': ['useSession', 'getProviders', 'signIn', 'signOut'],
-    // 'next-(auth)/next': ['getServerSession'],
-
     'next/head': [
       ['default', 'NextHead']
     ],
@@ -36,5 +34,4 @@ export default [
     imports: [['DocumentContext', 'NextDocumentContext']],
     type: true
   }
-
 ]

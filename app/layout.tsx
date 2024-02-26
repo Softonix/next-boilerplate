@@ -16,10 +16,10 @@ export default function RootLayout ({
 }>) {
   return (
     <html lang="en">
-      {/* suppressHydrationWarning={true} was added to fix warning
+      <body className={inter.className} suppressHydrationWarning={true}>
+        {/* suppressHydrationWarning={true} was added to fix warning
       "Extra attributes from the server: data-new-gr-c-s-check-loaded,data-gr-ext-installed" comes from Grammarly
       */}
-      <body className={inter.className} suppressHydrationWarning={true}>
         <main className='relative flex flex-col min-h-screen'>
           <Provider>
             <div className='flex-grow flex-1'>

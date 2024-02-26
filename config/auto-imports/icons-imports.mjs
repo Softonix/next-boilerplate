@@ -18,7 +18,7 @@ export const IconsImports = () => {
   return fs.readdirSync(iconsPath).map(file => {
     const fileName = path.parse(file).name
     return {
-      from: `~icons/icon/${fileName}.svg`,
+      from: `~icons/icon/${fileName}.jsx`,
       imports: [['default', `Icon${pascalCase(fileName)}`]]
     }
   })

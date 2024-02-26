@@ -3,8 +3,8 @@
  * These routes do not require authentication
  */
 export const publicRoutes: string[] = [
-  // '/',
-  '/auth/new-verification'
+  // '/'
+  // '/auth/new-verification'
 ]
 
 /**
@@ -15,7 +15,7 @@ export const authRoutes: string[] = [
   '/auth/login',
   '/auth/sign-up',
   '/auth/error',
-  '/auth/reset',
+  '/auth/reset-password',
   '/auth/new-password'
 ]
 

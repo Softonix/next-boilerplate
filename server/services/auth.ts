@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import bcrypt from 'bcryptjs'
 
 export const getUserByEmail = async (email: string) => {
   try {
@@ -26,11 +27,17 @@ export const createUser = async ({
   password
 }: z.infer<typeof registerSchema>) => {
   try {
-    const user = await prisma?.user.create({
-      email,
-      password,
-      name
+    const hashedPassword = await bcrypt.hash(password, 10)
+
+    const user = await prisma!.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+        name
+      }
     })
+
+    console.log(user)
 
     return user
   } catch {

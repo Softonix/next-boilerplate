@@ -1,32 +1,35 @@
 import NextAuth from 'next-auth'
 import type { NextAuthConfig } from 'next-auth'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
-import Credentials from 'next-auth/providers/credentials'
-import Github from 'next-auth/providers/github'
-import Google from 'next-auth/providers/google'
+import CredentialsProvider from 'next-auth/providers/credentials'
+import GithubProvider from 'next-auth/providers/github'
+import GoogleProvider from 'next-auth/providers/google'
 
 import { PrismaAdapter } from '@auth/prisma-adapter'
 
 import { prisma } from '@/server/db/client'
-import { getUserByEmail } from './server/services/auth'
+import { getUserByEmail, getUserById } from './server/services/auth'
+import { getAccountByUserId } from './server/services/account'
 
-export const config = {
+export const authOptions = {
   theme: {
     logo: 'https://next-auth.js.org/img/logo/logo-sm.png'
   },
   adapter: PrismaAdapter(prisma),
   session: { strategy: 'jwt' },
+  secret: process.env.NEXT_AUTH_SECRET,
   providers: [
-    Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET
     }),
-    Github({
+    GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET
     }),
-    Credentials({
+    CredentialsProvider({
+      name: 'Sign in',
       async authorize (credentials) {
         const validatedFields = loginSchema.safeParse(credentials)
 
@@ -49,9 +52,15 @@ export const config = {
     })
   ],
   callbacks: {
-    session ({ session, user }) {
+    async session ({ token, session }) {
+      if (token.sub && session.user) {
+        session.user.id = token.sub
+      }
+
       if (session.user) {
-        session.user.id = user.id
+        session.user.name = token.name
+        session.user.email = token.email!
+        // session.user.isOAuth = token.isOAuth as boolean
       }
 
       return session
@@ -60,6 +69,26 @@ export const config = {
       if (url.startsWith('/')) return `${baseUrl}${url}`
       else if (new URL(url).origin === baseUrl) return url
       return baseUrl
+    },
+    async signIn ({ account }) {
+      if (account?.provider !== 'credentials') return true
+
+      return true
+    },
+    async jwt ({ token }) {
+      if (!token.sub) return token
+
+      const existingUser = await getUserById(token.sub)
+
+      if (!existingUser) return token
+
+      const existingAccount = await getAccountByUserId(existingUser.id)
+
+      token.isOAuth = !!existingAccount
+      token.name = existingUser.name
+      token.email = existingUser.email
+
+      return token
     }
   }
 } satisfies NextAuthConfig
@@ -71,4 +100,4 @@ export const {
   auth,
   signIn,
   signOut
-} = NextAuth(config)
+} = NextAuth(authOptions)

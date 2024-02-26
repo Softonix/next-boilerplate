@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { cn } from '@/lib/utils'
+import { register } from '@/actions/register'
 
 export const SignUpForm: React.FC<{className?: string}> = (props) => {
   const [isPending, startTransition] = useTransition()
@@ -17,14 +18,22 @@ export const SignUpForm: React.FC<{className?: string}> = (props) => {
     }
   })
 
-  // const router = useRouter()
   const [customErrorMessage, setCustomErrorMessage] = useState<string | null>(null)
 
   function onSubmit (values: z.infer<typeof registerSchema>) {
-    startTransition(() => {
-      console.log(values)
-      setCustomErrorMessage('Email is already used')
+    startTransition(async () => {
+      try {
+        const res = await register(values)
+
+        if (res?.error) setCustomErrorMessage(res.error as string)
+      } catch (error) {
+        setCustomErrorMessage(JSON.stringify(error))
+      }
     })
+  }
+
+  function cleanError () {
+    setCustomErrorMessage(null)
   }
 
   return (
@@ -53,7 +62,7 @@ export const SignUpForm: React.FC<{className?: string}> = (props) => {
             <FormItem className='mt-3'>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input type='email' disabled={isPending} placeholder="john@doe.com" {...field} />
+                <Input type='email' disabled={isPending} placeholder="john@doe.com" onInput={cleanError} {...field} />
               </FormControl>
               <FormMessage>
                 {customErrorMessage}
@@ -82,6 +91,8 @@ export const SignUpForm: React.FC<{className?: string}> = (props) => {
         />
 
         <Button className='w-full mt-8' size='lg' disabled={isPending} type="submit">Continue</Button>
+
+        <SocialAuth className='mt-4' />
 
         <div className='flex items-center mt-12 justify-center w-full text-sm'>
           <p className='mr-2'>Already have an account?</p>

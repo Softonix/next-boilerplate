@@ -9,28 +9,25 @@
  * @link https://trpc.io/docs/v11/merging-routers
  */
 
-// import { getServerAuthSession } from './common/get-server-auth-session'
+// import { getServerAuthSession } from '@/auth'
 import { initTRPC, TRPCError } from '@trpc/server'
 import { prisma } from '@/server/db/client'
-
-interface ICreateContextOptions {
-  // session: Session | null
-}
 
 /**
  * Inner function for `createContext` where we create the context.
  * This is useful for testing when we don't want to mock Next.js' request/response
  */
-async function createContextInner (_opts: ICreateContextOptions) {
+export const createTRPCContext = async (opts: { headers: Headers }) => {
+  // const session = await getServerAuthSession()
+
   return {
-    // session: opts.session,
-    prisma
+    prisma,
+    // session,
+    ...opts
   }
 }
 
-type TContext = Awaited<ReturnType<typeof createContextInner>>;
-
-const t = initTRPC.context<TContext>().create()
+const t = initTRPC.context<typeof createTRPCContext>().create()
 
 // Protected base procedure
 function isAuthed ({ ctx, next }: any) {
