@@ -9,10 +9,22 @@ const nextConfig = {
   reactStrictMode: true,
   // pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js', 'api.ts'],
   images: {
-    domains: [
-      'lh3.googleusercontent.com',
-      'test-upload-picture-buckjet.s3.eu-north-1.amazonaws.com',
-      'avatars.githubusercontent.com'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
+        port: ''
+      },
+      {
+        protocol: 'https',
+        hostname: 'test-upload-picture-buckjet.s3.eu-north-1.amazonaws.com',
+        port: ''
+      },
+      {
+        protocol: 'https',
+        hostname: 'avatars.githubusercontent.com',
+        port: ''
+      }
     ]
   },
   webpack: (config) => {

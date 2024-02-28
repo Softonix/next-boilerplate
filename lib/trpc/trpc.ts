@@ -9,42 +9,49 @@
  * @link https://trpc.io/docs/v11/merging-routers
  */
 
-// import { getServerAuthSession } from '@/auth'
+import { auth } from '@/auth'
 import { initTRPC, TRPCError } from '@trpc/server'
 import { prisma } from '@/server/db/client'
+import superjson from 'superjson'
+import { ZodError } from 'zod'
 
 /**
  * Inner function for `createContext` where we create the context.
  * This is useful for testing when we don't want to mock Next.js' request/response
  */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
-  // const session = await getServerAuthSession()
+  const session = await auth()
 
   return {
     prisma,
-    // session,
+    session,
     ...opts
   }
 }
 
-const t = initTRPC.context<typeof createTRPCContext>().create()
+const t = initTRPC.context<typeof createTRPCContext>().create({
+  transformer: superjson,
+  errorFormatter ({ shape, error }) {
+    return {
+      ...shape,
+      data: {
+        ...shape.data,
+        zodError:
+          error.cause instanceof ZodError ? error.cause.flatten() : null
+      }
+    }
+  }
+})
 
 // Protected base procedure
 function isAuthed ({ ctx, next }: any) {
-  const user = ctx.session?.user
-
-  if (!user?.name) {
+  if (!ctx.session || !ctx.session.user) {
     throw new TRPCError({ code: 'UNAUTHORIZED' })
   }
-
-  console.log(user?.name)
-
   return next({
     ctx: {
-      user: {
-        ...user,
-        name: user.name
-      }
+      // infers the `session` as non-nullable
+      session: { ...ctx.session, user: ctx.session.user }
     }
   })
 }

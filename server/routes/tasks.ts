@@ -1,19 +1,30 @@
 export const tasksRouter = router({
-  getTasks: publicProcedure
-    .query(async ({ input, ctx }) => {
-      // signup
-      console.log('get tasks')
-      return true
+  getTasks: protectedProcedure
+    .query(async ({ ctx }) => {
+      const tasks = await ctx.prisma.toDoRecord.findMany()
+
+      return { tasks: tasks || [] }
     }),
 
-  createTask: publicProcedure
-    .input(
-      z.object({
-        email: z.string()
-      })
-    )
+  createTask: protectedProcedure
+    .input(createTaskSchema)
     .mutation(async ({ input, ctx }) => {
-      // signup
+      const validatedFields = createTaskSchema.safeParse(input)
+
+      if (!validatedFields.success) {
+        return { error: 'Invalid data' }
+      }
+
+      const { body } = validatedFields.data
+
+      const task = await ctx.prisma.toDoRecord.create({
+        data: {
+          body,
+          userId: ctx.session.user.id
+        }
+      })
+
+      return { success: true, task }
     })
 })
 

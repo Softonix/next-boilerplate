@@ -78,6 +78,12 @@
     "useTransition": true,
     "useTranslation": true,
     "withRouter": true,
-    "z": true
+    "z": true,
+    "createTaskSchema": true,
+    "TRPCReactProvider": true,
+    "api": true,
+    "getUrl": true,
+    "trpcServer": true,
+    "AddTask": true
   }
 }
