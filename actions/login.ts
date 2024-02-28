@@ -33,7 +33,6 @@ export const login = async (
       }
     }
 
-    console.log({ error })
     throw error
   }
 }

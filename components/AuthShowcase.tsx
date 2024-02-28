@@ -7,7 +7,7 @@ const AuthShowcase: React.FC<{ className: string }> = async (props) => {
 
   return (
     <div className={`flex items-center space-x-2 ${className}`}>
-      <Link href='/profile'>
+      <Link className='flex items-center space-x-2' href='/profile'>
         {session?.user?.image && (
           <NextImage
             src={session.user.image}

@@ -22,7 +22,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, IPasswordInputProps>(({
     <div className='relative'>
       {
         showForgotPassword && (
-          <Link href='/forgot-password' className='absolute -top-6 right-0 text-xs'>Forgot password?</Link>
+          <Link href='/auth/new-password' className='absolute -top-6 right-0 text-xs'>Forgot password?</Link>
         )
       }
 
