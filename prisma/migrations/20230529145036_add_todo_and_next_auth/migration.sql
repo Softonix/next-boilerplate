@@ -43,10 +43,11 @@ CREATE TABLE "new_ToDoRecord" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "userId" TEXT NOT NULL,
     "completed" BOOLEAN DEFAULT false,
-    "body" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "subtitle" TEXT,
     CONSTRAINT "ToDoRecord_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
-INSERT INTO "new_ToDoRecord" ("body", "id", "userId") SELECT "body", "id", "userId" FROM "ToDoRecord";
+INSERT INTO "new_ToDoRecord" ("title", "subtitle", "id", "userId") SELECT "title", "subtitle", "id", "userId" FROM "ToDoRecord";
 DROP TABLE "ToDoRecord";
 ALTER TABLE "new_ToDoRecord" RENAME TO "ToDoRecord";
 CREATE TABLE "new_User" (

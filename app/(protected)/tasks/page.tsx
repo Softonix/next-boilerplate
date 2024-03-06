@@ -4,7 +4,6 @@ const Tasks: React.FC<{ className: string }> = async (props) => {
   const { className = '' } = props
   noStore()
 
-  // const getTasks = await trpc.tasks.getTasks.useQuery || []
   const { tasks } = await trpcServer.tasks.getTasks.query()
 
   return (
@@ -14,15 +13,15 @@ const Tasks: React.FC<{ className: string }> = async (props) => {
         <AddTask />
       </div>
 
-      {tasks.length > 0 && (
-        tasks.map(task => {
-          return (
-            <div className='mb-2' key={task.id}>
-              <p>{task.body}</p>
-            </div>
-          )
-        })
-      )}
+      <div>
+        {tasks.length > 0 && (
+          tasks.map(task => {
+            return (
+              <TaskItem task={task} key={task.id} />
+            )
+          })
+        )}
+      </div>
     </div>
   )
 }

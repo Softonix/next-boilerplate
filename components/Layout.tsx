@@ -1,8 +1,4 @@
-type LayoutProps = {
-  children: React.ReactNode
-};
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: {children: React.ReactNode}) => {
   return (
     <div className='flex flex-col min-h-0 bg-green-50'>
       <Header />

@@ -1,16 +1,15 @@
 import 'server-only'
 
 import {
-  createTRPCClient,
+  createTRPCProxyClient,
   loggerLink,
   TRPCClientError
 } from '@trpc/client'
-import { callTRPCProcedure } from '@trpc/server'
+import { callProcedure } from '@trpc/server'
 import { observable } from '@trpc/server/observable'
 import { type TRPCErrorResponse } from '@trpc/server/rpc'
 import { headers } from 'next/headers'
 import { cache } from 'react'
-// import superjson from 'superjson'
 
 import { appRouter, type TAppRouter } from '@/server/routes'
 
@@ -27,8 +26,8 @@ const createContext = cache(() => {
   })
 })
 
-export const trpcServer = createTRPCClient<TAppRouter>({
-  // transformer: superjson,
+export const trpcServer = createTRPCProxyClient<TAppRouter>({
+  transformer,
   links: [
     loggerLink({
       enabled: (op) =>
@@ -42,12 +41,14 @@ export const trpcServer = createTRPCClient<TAppRouter>({
     () =>
       ({ op }) =>
         observable((observer) => {
+          console.log('here1')
+
           createContext()
             .then((ctx) => {
-              return callTRPCProcedure({
+              return callProcedure({
                 procedures: appRouter._def.procedures,
                 path: op.path,
-                getRawInput: () => Promise.resolve(), // check if it works
+                rawInput: op.input,
                 ctx,
                 type: op.type
               })
@@ -57,6 +58,9 @@ export const trpcServer = createTRPCClient<TAppRouter>({
               observer.complete()
             })
             .catch((cause: TRPCErrorResponse) => {
+              console.log('here')
+
+              // TODO make global error handling
               observer.error(TRPCClientError.from(cause))
             })
         })

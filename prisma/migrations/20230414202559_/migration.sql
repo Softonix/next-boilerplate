@@ -8,7 +8,8 @@ CREATE TABLE "User" (
 CREATE TABLE "ToDoRecord" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "userId" INTEGER NOT NULL,
-    "body" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "subtitle" TEXT,
     CONSTRAINT "ToDoRecord_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 

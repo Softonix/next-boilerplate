@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth'
-import type { NextAuthConfig } from 'next-auth'
+import type { NextAuthConfig, DefaultSession } from 'next-auth'
 import bcrypt from 'bcryptjs'
 
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -10,7 +10,13 @@ import { PrismaAdapter } from '@auth/prisma-adapter'
 
 import { prisma } from '@/server/db/client'
 import { getUserByEmail, getUserById } from './server/services/auth'
-import { getAccountByUserId } from './server/services/account'
+// import { getAccountByUserId } from './server/services/account'
+
+declare module 'next-auth' {
+  interface ISession extends DefaultSession {
+    user: PrismaUser
+  }
+}
 
 export const authOptions = {
   theme: {
@@ -70,11 +76,11 @@ export const authOptions = {
       else if (new URL(url).origin === baseUrl) return url
       return baseUrl
     },
-    async signIn ({ account }) {
-      if (account?.provider !== 'credentials') return true
+    // async signIn ({ account }) {
+    //   if (account?.provider !== 'credentials') return true
 
-      return true
-    },
+    //   return true
+    // },
     async jwt ({ token }) {
       if (!token.sub) return token
 
@@ -82,9 +88,10 @@ export const authOptions = {
 
       if (!existingUser) return token
 
-      const existingAccount = await getAccountByUserId(existingUser.id)
+      // const existingAccount = await getAccountByUserId(existingUser.id)
+      // console.log({ existingAccount })
 
-      token.isOAuth = !!existingAccount
+      // token.isOAuth = !!existingAccount
       token.name = existingUser.name
       token.email = existingUser.email
 

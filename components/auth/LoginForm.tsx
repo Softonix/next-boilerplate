@@ -3,7 +3,6 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { cn } from '@/lib/utils'
 import { login } from '@/actions/login'
 import { useSearchParams } from 'next/navigation'
 
@@ -49,10 +48,7 @@ export const LoginForm: React.FC<{className?: string}> = (props) => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn(
-          'w-full',
-          props.className
-        )}
+        className={cn('w-full', props.className)}
       >
         <FormField
           control={form.control}

@@ -18,10 +18,14 @@ export const authRouter = router({
         }
       })
 
-      if (!user) throw new Error('User not found')
+      if (!user) {
+        return { error: 'User not found' }
+      }
 
       const isValidPassword = await bcrypt.compare(password, user.password as string)
-      if (!isValidPassword) throw new Error('User not found')
+      if (!isValidPassword) {
+        return { error: 'User not found' }
+      }
 
       return { success: true, user }
     }),
@@ -32,13 +36,9 @@ export const authRouter = router({
 
   getUserById: protectedProcedure.input(z.string()).query(
     async ({ ctx: { prisma }, input }) => {
-      try {
-        const user = await prisma.user.findUnique({ where: { id: input } })
+      const user = await prisma.user.findUnique({ where: { id: input } })
 
-        return user
-      } catch (error) {
-        console.log(error)
-      }
+      return user
     }
   ),
 
@@ -49,12 +49,12 @@ export const authRouter = router({
       ctx: { prisma, session },
       input
     }) => {
-      const updateduser = await prisma.user.update({
+      const updatedUser = await prisma.user.update({
         where: { id: session?.user?.id },
         data: input
       })
 
-      return updateduser
+      return updatedUser
     }
   ),
 

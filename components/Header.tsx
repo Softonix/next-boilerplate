@@ -22,7 +22,7 @@ const Header = () => {
             variant='default'
             className='ml-4'
           >
-              To Todo list{' '}
+            <Link href='/tasks'>To Todo list</Link>
           </Button>
         </>
       )}

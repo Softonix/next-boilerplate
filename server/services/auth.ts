@@ -37,8 +37,6 @@ export const createUser = async ({
       }
     })
 
-    console.log(user)
-
     return user
   } catch {
     return null
