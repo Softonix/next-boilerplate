@@ -3,7 +3,7 @@
  * These routes do not require authentication
  */
 export const publicRoutes: string[] = [
-  // '/'
+  '/'
   // '/auth/new-verification'
 ]
 
@@ -28,4 +28,4 @@ export const apiAuthPrefix: string = '/api/auth'
 /**
  * The default redirect path after logging in
  */
-export const DEFAULT_LOGIN_REDIRECT: string = '/'
+export const DEFAULT_LOGIN_REDIRECT: string = '/tasks'

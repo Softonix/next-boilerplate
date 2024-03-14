@@ -117,6 +117,26 @@
     "useTransition": true,
     "useTranslation": true,
     "withRouter": true,
-    "z": true
+    "z": true,
+    "HooksMenu": true,
+    "Menubar": true,
+    "MenubarCheckboxItem": true,
+    "MenubarContent": true,
+    "MenubarGroup": true,
+    "MenubarItem": true,
+    "MenubarLabel": true,
+    "MenubarMenu": true,
+    "MenubarPortal": true,
+    "MenubarRadioGroup": true,
+    "MenubarRadioItem": true,
+    "MenubarSeparator": true,
+    "MenubarShortcut": true,
+    "MenubarSub": true,
+    "MenubarSubContent": true,
+    "MenubarSubTrigger": true,
+    "MenubarTrigger": true,
+    "usePathname": true,
+    "useSearchParams": true,
+    "SkippingEffects": true
   }
 }

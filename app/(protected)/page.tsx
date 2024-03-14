@@ -1,13 +1,13 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Test head'
+  title: 'Home'
 }
 
 export default function Home () {
   return (
     <div>
-      <h1 className='font-bold text-2xl mb-4'>Main</h1>
+      <h1 className='font-bold text-2xl mb-4'>Home</h1>
     </div>
   )
 }

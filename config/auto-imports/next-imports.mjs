@@ -3,7 +3,7 @@ export default [
   {
     'next/link': [['default', 'Link']],
     'next/image': [['default', 'NextImage']],
-    'next/navigation': ['useRouter', 'withRouter'],
+    'next/navigation': ['useRouter', 'usePathname', 'useSearchParams'],
     'next/document': [
       ['NextScript', 'NextDocumentScript'],
       ['Html', 'NextDocumentHtml'],
