@@ -137,6 +137,20 @@
     "MenubarTrigger": true,
     "usePathname": true,
     "useSearchParams": true,
-    "SkippingEffects": true
+    "SkippingEffects": true,
+    "taskIdSchema": true,
+    "copyText": true,
+    "CounterContext": true,
+    "CounterProvider": true,
+    "initState": true,
+    "useCounter": true,
+    "useCounterText": true,
+    "taskState": true,
+    "TaskContext": true,
+    "TasksContext": true,
+    "useTasks": true,
+    "TaskContextProvider": true,
+    "TaskList": true,
+    "FC, Suspense": true
   }
 }

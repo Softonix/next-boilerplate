@@ -1,18 +1,18 @@
 import { auth } from '@/auth'
 
-const Profile: React.FC<{ className: string }> = async (props) => {
+const Profile: React.FC = async () => {
   const session = await auth()
 
-  const { className = '' } = props
-
   return (
-    <div className={className}>
+    <div>
       <h1 className='font-bold text-2xl mb-4'>Profile</h1>
 
       {session?.user && (
-        <UserBadge user={session.user} />
+        <UserBadge user={session.user} showName={true} />
       )}
-      {JSON.stringify(session)}
+      <pre className='mt-10'>
+        {JSON.stringify(session, null, 4)}
+      </pre>
     </div>
   )
 }

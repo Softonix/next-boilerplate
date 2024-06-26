@@ -6,10 +6,22 @@ interface IProps {
 }
 
 export const TaskMenu: FC<IProps> = ({ className, task, updateTask }) => {
-  console.log(task.id)
-
   function completeTask () {
     updateTask(!task.completed)
+    toast(!task.completed ? 'Completed' : 'Unfinished')
+  }
+
+  function deleteTask () {
+    console.log('delete')
+  }
+
+  function toggleEdit () {
+    console.log('edit')
+  }
+
+  function copyLink () {
+    const url = new URL(`${window.location.origin}/tasks/${task.id}`).toString()
+    copyText(url, () => toast('Copied'))
   }
 
   return (
@@ -17,10 +29,10 @@ export const TaskMenu: FC<IProps> = ({ className, task, updateTask }) => {
       <DropdownMenu>
         <DropdownMenuTrigger>menu</DropdownMenuTrigger>
         <DropdownMenuContent>
+          <DropdownMenuItem onClick={toggleEdit}>Edit</DropdownMenuItem>
           <DropdownMenuItem onClick={completeTask}>{task.completed ? 'Re-open' : 'Complete'}</DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Team</DropdownMenuItem>
-          <DropdownMenuItem>Subscription</DropdownMenuItem>
+          <DropdownMenuItem onClick={copyLink}>Copy link</DropdownMenuItem>
+          <DropdownMenuItem onClick={deleteTask}>Delete</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

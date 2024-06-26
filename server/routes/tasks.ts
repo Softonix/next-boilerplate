@@ -19,6 +19,42 @@ export const tasksRouter = router({
       return { tasks: tasks || [] }
     }),
 
+  getTaskById: protectedProcedure
+    .input(taskIdSchema)
+    .query(async ({ input, ctx }) => {
+      const validatedFields = taskIdSchema.safeParse(input)
+
+      if (!validatedFields.success) {
+        return { error: 'Invalid data' }
+      }
+
+      const { id } = validatedFields.data
+
+      const task = await ctx.prisma.toDoRecord.findUnique({
+        where: {
+          id
+        },
+        include: {
+          user: true
+        // user: {
+        //   select: {
+        //     id: true,
+        //     city: true,
+        //     email: true,
+        //     image: true,
+        //     name: true
+        //   }
+        // }
+        }
+      })
+
+      if (!task) {
+        return { error: 'Task not found' }
+      }
+
+      return { task }
+    }),
+
   createTask: protectedProcedure
     .input(createTaskSchema)
     .mutation(async ({ input, ctx }) => {
@@ -72,9 +108,9 @@ export const tasksRouter = router({
     }),
 
   deleteTask: protectedProcedure
-    .input(deleteTaskSchema)
+    .input(taskIdSchema)
     .mutation(async ({ input, ctx }) => {
-      const validatedFields = deleteTaskSchema.safeParse(input)
+      const validatedFields = taskIdSchema.safeParse(input)
 
       if (!validatedFields.success) {
         return { error: 'Invalid data' }
@@ -89,9 +125,9 @@ export const tasksRouter = router({
         }
       })
 
-      // if (!task) {
-      //   return { success: false, error: 'Task not found' }
-      // }
+      if (!task) {
+        return { success: false, error: 'Task not found' }
+      }
 
       return { success: true, task }
     })

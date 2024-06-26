@@ -9,7 +9,7 @@ interface IProps {
 
 export const UserBadge: FC<IProps> = ({ className, user, size = 32, showName }) => {
   return (
-    <div className={cn('flex items-center space-x-2 border rounded-full', className)}>
+    <div className={cn('flex items-center space-x-2', className)}>
       {user?.image
         ? (
           <NextImage
@@ -22,7 +22,7 @@ export const UserBadge: FC<IProps> = ({ className, user, size = 32, showName }) 
         )
         : (
           <div
-            className='text-xxs font-semibold table text-center'
+            className='border border-black rounded-full text-xxs font-semibold table text-center'
             style={{ width: `${size}px`, height: `${size}px` }}>
 
             <span className='leading-none align-middle table-cell'>

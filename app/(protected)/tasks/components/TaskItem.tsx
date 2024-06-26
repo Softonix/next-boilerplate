@@ -34,16 +34,17 @@ export const TaskItem: FC<IProps> = ({
   }
 
   return (
-    <div className={cn(
-      'flex items-center border border-grey-100 shadow-md hover:shadow-lg cursor-pointer rounded-md p-2 mt-2',
-      className
-    )}>
+    <Link
+      href={`/tasks/${task.id}`}
+      className={cn(
+        'flex items-center border border-grey-100 shadow-md hover:shadow-lg cursor-pointer rounded-md p-2 mt-2',
+        className
+      )}>
       <div className={cn('flex items-center', task.completed && 'line-through text-gray-400')}>
         <p>{task.title}</p>
-        <p>{task.subtitle}</p>
       </div>
 
-      <div className='flex items-center ml-auto'>
+      <div className='flex items-center ml-auto' onClick={(e) => e.preventDefault()}>
         <UserBadge className='mr-2' user={task.user} showName={false} size={22} />
 
         <div onClick={() => toggleCompleted(!isCompleted)} className='mr-2'>
@@ -58,6 +59,6 @@ export const TaskItem: FC<IProps> = ({
 
         <TaskMenu className='opacity-80 hover:opacity-100' task={task} updateTask={toggleCompleted} />
       </div>
-    </div>
+    </Link>
   )
 }

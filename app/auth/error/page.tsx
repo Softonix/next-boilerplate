@@ -1,8 +1,5 @@
-const AuthErrorPage = () => {
+export default function AuthErrorPage () {
   return (
-    // <ErrorCard />
     <div>error</div>
   )
 }
-
-export default AuthErrorPage

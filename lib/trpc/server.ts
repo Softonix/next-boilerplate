@@ -41,8 +41,6 @@ export const trpcServer = createTRPCProxyClient<TAppRouter>({
     () =>
       ({ op }) =>
         observable((observer) => {
-          console.log('here1')
-
           createContext()
             .then((ctx) => {
               return callProcedure({

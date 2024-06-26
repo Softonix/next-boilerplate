@@ -11,6 +11,7 @@ export const AutoImportsPlugin = () => AutoImports({
     './components/**/*.tsx',
     './app/**/components/**/*.tsx',
     './context',
+    './core/*.ts',
     './schemas',
     './lib/**/*.ts'
   ],

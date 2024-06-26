@@ -3,7 +3,7 @@ export const createTaskSchema = z.object({
   subtitle: z.string().trim().optional()
 })
 
-export const deleteTaskSchema = z.object({
+export const taskIdSchema = z.object({
   id: z.number()
 })
 
