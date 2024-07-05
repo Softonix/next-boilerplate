@@ -37,6 +37,7 @@ model User {
   name          String?
   nickname      String?
   email         String?   @unique
+  password      String?
   phone         String?
   stripeCustomerId         String?
   stripeSubscriptionId     String?
@@ -52,11 +53,12 @@ model User {
 
 
 model ToDoRecord {
-  id     Int    @id @default(autoincrement())
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
-  completed Boolean?  @default(false)
-  body   String // maps to text db type
+  id             Int    @id @default(autoincrement())
+  user           User   @relation(fields: [userId], references: [id])
+  userId         String
+  completed      Boolean?  @default(false)
+  title          String // maps to text db type
+  subtitle       String? // maps to text db type
 }
 
 model VerificationToken {
