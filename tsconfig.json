@@ -1,42 +1,36 @@
 {
   "compilerOptions": {
-    /* Base Options: */
-    "esModuleInterop": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
     "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-
-    /* Strictness */
     "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "checkJs": true,
-
-    /* Bundled projects */
-    "lib": ["dom", "dom.iterable", "ES2022"],
     "noEmit": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "jsx": "preserve",
-    "plugins": [{ "name": "next" }],
     "incremental": true,
-
-    /* Path Aliases */
-    "baseUrl": ".",
+    "strictPropertyInitialization": false,
+    "noFallthroughCasesInSwitch": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
-      "~/*": ["./src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
-    ".eslintrc.cjs",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.cjs",
-    "**/*.js",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "auto-import/auto-imports.config.mjs",
+    "src/app/styles/tailwind/tailwind.config.ts",
+    "src/app/styles/tailwind/tailwind.colors.ts"
   ],
   "exclude": ["node_modules"]
 }
