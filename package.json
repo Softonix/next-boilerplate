@@ -13,7 +13,8 @@
     "lint": "next lint",
     "prepare": "husky",
     "type-check": "npx tsc --noEmit",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "postinstall": "npm run prepare"
   },
   "engines": {
     "node": ">=20.11.0",
