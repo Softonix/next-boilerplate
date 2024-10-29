@@ -1,0 +1,8 @@
+<svg>
+  <linearGradient id="gradient" x1="0.81958" y1="10.2212" x2="19.8686" y2="10.2212"
+    gradientUnits="userSpaceOnUse">
+    <stop class="first-stop" offset="0" />
+    <stop class="second-stop" offset="0.4" />
+    <stop class="third-stop" offset="0.715" />
+  </linearGradient>
+</svg>

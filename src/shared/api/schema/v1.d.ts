@@ -673,7 +673,7 @@ export interface paths {
                 userId?: string | null;
                 metadata?: ({
                   /** @enum {string|null} */
-                  currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+                  currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
                   /** @enum {string} */
                   sortingField: "lastPrice" | "mileage" | "year" | "scoreCar" | "scoreDeal";
                   /** @enum {string} */
@@ -795,7 +795,7 @@ export interface paths {
                 availableGroupings?: string[] | null;
                 availableSorting: string[];
                 /** @enum {string|null} */
-                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
                 /** @enum {string} */
                 sortingField: "lastPrice" | "mileage" | "year" | "scoreCar" | "scoreDeal";
                 /** @enum {string} */
@@ -1238,7 +1238,7 @@ export interface paths {
     get: {
       parameters: {
         query?: {
-          grouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+          grouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
         };
         path: {
           carId: string;
@@ -1409,55 +1409,6 @@ export interface paths {
       };
     };
   };
-  "/api/public/search-chat/": {
-    post: {
-      requestBody: {
-        content: {
-          "application/json": {
-            message: string;
-          };
-        };
-      };
-      responses: {
-        /** @description Default Response */
-        200: {
-          content: {
-            "application/json": {
-              /** Format: uuid */
-              searchResultId: string;
-            };
-          };
-        };
-      };
-    };
-  };
-  "/api/public/search-chat/{chatId}/message": {
-    post: {
-      parameters: {
-        path: {
-          chatId: string;
-        };
-      };
-      requestBody: {
-        content: {
-          "application/json": {
-            message: string;
-          };
-        };
-      };
-      responses: {
-        /** @description Default Response */
-        200: {
-          content: {
-            "application/json": {
-              /** Format: uuid */
-              searchResultId: string;
-            };
-          };
-        };
-      };
-    };
-  };
   "/api/public/search-result/history/{searchResultId}": {
     get: {
       parameters: {
@@ -1515,7 +1466,7 @@ export interface paths {
                 availableGroupings?: string[] | null;
                 availableSorting: string[];
                 /** @enum {string|null} */
-                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
                 /** @enum {string} */
                 sortingField: "lastPrice" | "mileage" | "year" | "scoreCar" | "scoreDeal";
                 /** @enum {string} */
@@ -1527,6 +1478,55 @@ export interface paths {
               }) | null;
               followUpQuestions?: string[] | null;
               searchResultIds?: string[] | null;
+            };
+          };
+        };
+      };
+    };
+  };
+  "/api/public/search-chat/": {
+    post: {
+      requestBody: {
+        content: {
+          "application/json": {
+            message: string;
+          };
+        };
+      };
+      responses: {
+        /** @description Default Response */
+        200: {
+          content: {
+            "application/json": {
+              /** Format: uuid */
+              searchResultId: string;
+            };
+          };
+        };
+      };
+    };
+  };
+  "/api/public/search-chat/{chatId}/message": {
+    post: {
+      parameters: {
+        path: {
+          chatId: string;
+        };
+      };
+      requestBody: {
+        content: {
+          "application/json": {
+            message: string;
+          };
+        };
+      };
+      responses: {
+        /** @description Default Response */
+        200: {
+          content: {
+            "application/json": {
+              /** Format: uuid */
+              searchResultId: string;
             };
           };
         };
@@ -1605,7 +1605,7 @@ export interface paths {
                 availableGroupings?: string[] | null;
                 availableSorting: string[];
                 /** @enum {string|null} */
-                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
                 /** @enum {string} */
                 sortingField: "lastPrice" | "mileage" | "year" | "scoreCar" | "scoreDeal";
                 /** @enum {string} */
@@ -1627,7 +1627,7 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          currentGrouping: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style";
+          currentGrouping: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal";
         };
         path: {
           searchResultId: string;
@@ -1683,7 +1683,7 @@ export interface paths {
                 availableGroupings?: string[] | null;
                 availableSorting: string[];
                 /** @enum {string|null} */
-                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
                 /** @enum {string} */
                 sortingField: "lastPrice" | "mileage" | "year" | "scoreCar" | "scoreDeal";
                 /** @enum {string} */
@@ -1762,7 +1762,7 @@ export interface paths {
                 availableGroupings?: string[] | null;
                 availableSorting: string[];
                 /** @enum {string|null} */
-                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
                 /** @enum {string} */
                 sortingField: "lastPrice" | "mileage" | "year" | "scoreCar" | "scoreDeal";
                 /** @enum {string} */
@@ -1939,7 +1939,7 @@ export interface paths {
                 availableGroupings?: string[] | null;
                 availableSorting: string[];
                 /** @enum {string|null} */
-                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
                 /** @enum {string} */
                 sortingField: "lastPrice" | "mileage" | "year" | "scoreCar" | "scoreDeal";
                 /** @enum {string} */
@@ -1961,7 +1961,7 @@ export interface paths {
     get: {
       parameters: {
         query: {
-          currentGrouping: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style";
+          currentGrouping: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal";
         };
         path: {
           searchResultId: string;
@@ -2017,7 +2017,7 @@ export interface paths {
                 availableGroupings?: string[] | null;
                 availableSorting: string[];
                 /** @enum {string|null} */
-                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
                 /** @enum {string} */
                 sortingField: "lastPrice" | "mileage" | "year" | "scoreCar" | "scoreDeal";
                 /** @enum {string} */
@@ -2096,7 +2096,7 @@ export interface paths {
                 availableGroupings?: string[] | null;
                 availableSorting: string[];
                 /** @enum {string|null} */
-                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+                currentGrouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
                 /** @enum {string} */
                 sortingField: "lastPrice" | "mileage" | "year" | "scoreCar" | "scoreDeal";
                 /** @enum {string} */
@@ -2137,7 +2137,7 @@ export interface paths {
     get: {
       parameters: {
         query?: {
-          grouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | null;
+          grouping?: "price_range" | "age" | "make_model" | "trim" | "mileage" | "body_style" | "score_car" | "score_deal" | null;
         };
         path: {
           carId: string;

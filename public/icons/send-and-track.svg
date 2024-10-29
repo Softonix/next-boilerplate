@@ -1,0 +1,8 @@
+<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8.18601 13.8138L12.055 21.2L21.1998 0.799988L0.799805 10.6483L8.18601 13.8138Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <linearGradient id="gradient" x1="0.81958" y1="10.2212" x2="19.8686" y2="10.2212" gradientUnits="userSpaceOnUse">
+        <stop class="first-stop" offset="0" />
+        <stop class="second-stop" offset="0.4" />
+        <stop class="third-stop" offset="0.715" />
+    </linearGradient>
+</svg>
