@@ -1,11 +1,11 @@
 import { AppButton } from '@/shared/ui'
 
-type SidebarNewThreadBtnProps = {
+type TSidebarNewThreadBtnProps = {
   isSidebarOpened: boolean
   onClick?: () => void
 }
 
-const NewThreadBtn = ({ isSidebarOpened, onClick }: SidebarNewThreadBtnProps) => {
+const NewThreadBtn = ({ isSidebarOpened, onClick }: TSidebarNewThreadBtnProps) => {
   return (
     <AppButton
       theme={isSidebarOpened ? 'outlined' : 'transparent'}

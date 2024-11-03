@@ -1,14 +1,14 @@
 'use client'
 
-type PageLoadingProviderProps = ChildrenProps
-type PageLoadingContextValue = {
+type TPageLoadingProviderProps = TChildrenProps
+type TPageLoadingContextValue = {
   isLoading: boolean
   setIsLoading: (value: boolean) => void
 }
 
-const PageLoadingContext = createContext<PageLoadingContextValue | null>(null)
+const PageLoadingContext = createContext<TPageLoadingContextValue | null>(null)
 
-const PageLoadingProvider = ({ children }: PageLoadingProviderProps) => {
+const PageLoadingProvider = ({ children }: TPageLoadingProviderProps) => {
   const [isLoading, setIsLoading] = useState(false)
   return (
     <PageLoadingContext.Provider

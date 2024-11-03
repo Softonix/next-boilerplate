@@ -2,9 +2,9 @@
 
 import * as SeparatorPrimitive from '@radix-ui/react-separator'
 
-type AppSeparatorProps = { label?: string } & React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+type TAppSeparatorProps = { label?: string } & React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
 
-const AppSeparator = forwardRef<React.ElementRef<typeof SeparatorPrimitive.Root>, AppSeparatorProps>(
+const AppSeparator = forwardRef<React.ElementRef<typeof SeparatorPrimitive.Root>, TAppSeparatorProps>(
   ({ className, orientation = 'horizontal', decorative = true, label, ...props }, ref) => (
     <SeparatorPrimitive.Root
       ref={ref}

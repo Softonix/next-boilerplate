@@ -3,16 +3,16 @@
 import { usePageLoadingContext } from '@/shared/lib/contexts'
 import { AppLoading } from '@/shared/ui'
 
-type PageWrapperProps = {
+type TPageWrapperProps = {
   classNames?: {
     root?: import('clsx').ClassValue
     children?: import('clsx').ClassValue
   }
-} & ChildrenProps &
-  ChildrenProps<'footer'> &
-  ChildrenProps<'header'>
+} & TChildrenProps &
+  TChildrenProps<'footer'> &
+  TChildrenProps<'header'>
 
-const PageWrapper = ({ classNames, header, children, footer }: PageWrapperProps) => {
+const PageWrapper = ({ classNames, header, children, footer }: TPageWrapperProps) => {
   const { isLoading } = usePageLoadingContext()
 
   return (

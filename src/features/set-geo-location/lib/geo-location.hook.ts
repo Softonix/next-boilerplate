@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 
 import { googlemapsService } from '@/shared/lib/services'
 import { GEO_COOKIE_KEYS } from '@/shared/lib/constants'
-import { IGeoCoordinates } from '../model/types'
+import { TGeoCoordinates } from '../model/types'
 
 const cookiesOptions: Cookies.CookieAttributes = {
   expires: 30,
@@ -19,7 +19,7 @@ export function useGeolocation() {
   )
   const [zipCodeCookie, setZipCodeCookieState] = useState<string | null>(Cookies.get(GEO_COOKIE_KEYS.ZIP_CODE) || null)
 
-  const setGeoCookies = useCallback(({ latitude, longitude }: IGeoCoordinates) => {
+  const setGeoCookies = useCallback(({ latitude, longitude }: TGeoCoordinates) => {
     setGeoCookieLat(String(latitude))
     setGeoCookieLong(String(longitude))
 
@@ -34,7 +34,7 @@ export function useGeolocation() {
   }, [])
 
   const getDistance = useCallback(
-    (coords: IGeoCoordinates) => {
+    (coords: TGeoCoordinates) => {
       if (geoCookieLat && geoCookieLong) {
         const toRadians = (degree: number) => degree * (Math.PI / 180)
 

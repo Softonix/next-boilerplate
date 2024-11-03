@@ -4,7 +4,7 @@ export {
   SearchBox,
   SearchHistoryList,
   type SearchBoxProps,
-  type SearchBoxSchema,
+  type TSearchBoxSchema,
   type TNewThreadDialogProps,
 } from './ui'
 

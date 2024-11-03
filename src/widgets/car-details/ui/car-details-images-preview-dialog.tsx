@@ -3,7 +3,7 @@ import { AppDialog, AppDialogContent, AppDialogTitle, VisuallyHidden } from '@/s
 
 type TCarDetailsImagesPreviewDialogProps = {
   images: TCarDetailsResponse['images']
-} & DialogDefaultProps
+} & TDialogDefaultProps
 
 const CarDetailsImagesPreviewDialog = ({ images, closeDialog, ...props }: TCarDetailsImagesPreviewDialogProps) => {
   return (

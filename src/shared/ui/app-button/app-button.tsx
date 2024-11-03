@@ -1,9 +1,9 @@
 import { createElement } from 'react'
 import Link from 'next/link'
 
-import { AppButtonProps, AppButtonTag } from './app-button.props'
+import { TAppButtonProps, TAppButtonTag } from './app-button.props'
 
-export function AppButton<Tag extends AppButtonTag = 'button'>({
+export function AppButton<Tag extends TAppButtonTag = 'button'>({
   children,
   className,
   variant,
@@ -11,7 +11,7 @@ export function AppButton<Tag extends AppButtonTag = 'button'>({
   size = 'default',
   theme = 'primary',
   ...props
-}: AppButtonProps<Tag>) {
+}: TAppButtonProps<Tag>) {
   const parsedTag = tag ?? 'button'
 
   const classes = cn(generateButtonStyles({ variant, theme, size }), className)
@@ -26,7 +26,7 @@ export function AppButton<Tag extends AppButtonTag = 'button'>({
   )
 }
 
-const generateButtonStyles = <Tag extends AppButtonTag = 'button'>({ size, theme, variant }: AppButtonProps<Tag>) => {
+const generateButtonStyles = <Tag extends TAppButtonTag = 'button'>({ size, theme, variant }: TAppButtonProps<Tag>) => {
   return cn([
     'select-none rounded-lg px-16 font-medium transition duration-300',
     'inline-flex items-center justify-center gap-x-4',

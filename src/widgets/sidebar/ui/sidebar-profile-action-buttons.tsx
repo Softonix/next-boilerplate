@@ -2,9 +2,9 @@ import { authService } from '@/shared/auth'
 import { useAuthContext } from '@/shared/lib/contexts'
 import { AppButton, AppSeparator } from '@/shared/ui'
 
-type SidebarProfileActionButtonsProps = { isSidebarOpened: boolean }
+type TSidebarProfileActionButtonsProps = { isSidebarOpened: boolean }
 
-const SidebarProfileActionButtons = ({ isSidebarOpened }: SidebarProfileActionButtonsProps) => {
+const SidebarProfileActionButtons = ({ isSidebarOpened }: TSidebarProfileActionButtonsProps) => {
   const { user } = useAuthContext()
 
   return (
@@ -39,7 +39,11 @@ const SidebarProfileActionButtons = ({ isSidebarOpened }: SidebarProfileActionBu
 
       {!isSidebarOpened && <AppSeparator className="my-12" />}
 
-      <AppButton theme="transparent" size={isSidebarOpened ? 'small' : 'default'} onClick={authService.handleSignOut}>
+      <AppButton
+        theme="transparent"
+        size={isSidebarOpened ? 'small' : 'default'}
+        onClick={authService.handleSignOut}
+      >
         <AppIconSignOut className="cursor-pointer" />
       </AppButton>
     </div>

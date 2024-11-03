@@ -6,7 +6,7 @@ import { SearchResultRelatedPrompts } from './search-result-related-prompts'
 import { GroupedSearchResult } from './group-search-result'
 import { TSearchResultResponse } from '../lib/types'
 
-export type SearchResultProps = {
+export type TSearchResultProps = {
   searchResult: TSearchResultResponse
   index: number
   hasPreviousHistory: boolean
@@ -14,7 +14,7 @@ export type SearchResultProps = {
   onSearch: (prompt: string) => unknown
 }
 
-const SearchResult = forwardRef<HTMLDivElement, SearchResultProps>(
+const SearchResult = forwardRef<HTMLDivElement, TSearchResultProps>(
   ({ index, searchResult, hasPreviousHistory, onShowPrevResult, onSearch }, ref) => {
     const isDesktop = useMediaQuery('(min-width: 1024px)')
 

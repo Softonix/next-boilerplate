@@ -38,7 +38,7 @@ export const useSearchHistory = () => {
     },
   })
 
-  function fetchSeachHistory({ signal }: Signal) {
+  function fetchSeachHistory({ signal }: TSignal) {
     return getSearchChats({ signal }).then(({ data }) => {
       const map: TSearchChatsMap = new Map()
       data?.forEach((chat) => {

@@ -1,9 +1,9 @@
 'use client'
 
-import { AppDialog, AppDialogContent, AppDialogTitle, AppLoading, VisuallyHidden } from '@/shared/ui'
+import { AppButton, AppDialog, AppDialogContent, AppDialogTitle, AppLoading, VisuallyHidden } from '@/shared/ui'
 import { useGeolocation } from '../lib/geo-location.hook'
 
-type TZipCodeDialogProps = { onZipCodeSaved?: () => unknown } & DialogDefaultProps
+type TZipCodeDialogProps = { onZipCodeSaved?: () => unknown } & TDialogDefaultProps
 
 type TZipCodeDialogSchema = { zipCode: string }
 
@@ -28,7 +28,10 @@ const ZipCodeDialog = ({ onZipCodeSaved, closeDialog, ...props }: TZipCodeDialog
 
   return (
     <AppDialog {...props}>
-      <AppDialogContent aria-describedby={undefined} className="w-[430px]">
+      <AppDialogContent
+        aria-describedby={undefined}
+        className="w-[430px]"
+      >
         <VisuallyHidden>
           <AppDialogTitle />
         </VisuallyHidden>
@@ -58,12 +61,20 @@ const ZipCodeDialog = ({ onZipCodeSaved, closeDialog, ...props }: TZipCodeDialog
                 },
               ]}
             >
-              <AntInput placeholder="Provide your zip code here..." size="middle" />
+              <AntInput
+                placeholder="Provide your zip code here..."
+                size="middle"
+              />
             </AntForm.Item>
 
-            <AntButton htmlType="submit" type="primary" block>
+            <AppButton
+              type="submit"
+              theme="primary"
+              className="w-full"
+              size="small"
+            >
               Submit
-            </AntButton>
+            </AppButton>
           </AntForm>
         </div>
       </AppDialogContent>

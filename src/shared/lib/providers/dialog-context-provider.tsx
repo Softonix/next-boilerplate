@@ -4,7 +4,7 @@ import { DialogInstanceContext } from '@/shared/ui'
 import dynamic from 'next/dynamic'
 import { ComponentType } from 'react'
 
-type IDialog = { component: any; props: any; isOpen: boolean }
+type TDialog = { component: any; props: any; isOpen: boolean }
 
 type TComponentsType = typeof components
 
@@ -16,11 +16,11 @@ export type TComponentProps = {
   [K in TComponentNames]: TInferProps<TComponentsType[K]>
 }
 
-type DialogContextProviderProps = { children: React.ReactNode }
+type TDialogContextProviderProps = { children: React.ReactNode }
 
-type DialogMap = Partial<Record<TComponentNames, IDialog>>
+type TDialogMap = Partial<Record<TComponentNames, TDialog>>
 
-type DialogContextValue = {
+type TDialogContextValue = {
   openDialog: <T extends TComponentNames>(name: T, props?: TComponentProps[T]) => void
   closeDialog: <T extends TComponentNames>(name: T) => void
 }
@@ -36,10 +36,10 @@ const components = {
   ),
 } as const
 
-export const DialogContext = createContext<DialogContextValue | null>(null)
+export const DialogContext = createContext<TDialogContextValue | null>(null)
 
-export const DialogContextProvider = ({ children }: DialogContextProviderProps) => {
-  const [Dialogs, setDialogs] = useState<DialogMap>({})
+export const DialogContextProvider = ({ children }: TDialogContextProviderProps) => {
+  const [Dialogs, setDialogs] = useState<TDialogMap>({})
 
   const openDialog = useCallback(<T extends TComponentNames>(name: T, props?: TComponentProps[T]) => {
     setDialogs((prev) => ({

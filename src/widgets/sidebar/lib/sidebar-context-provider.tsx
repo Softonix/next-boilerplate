@@ -2,18 +2,18 @@
 
 import { useContextValue } from '@/shared/lib/contexts'
 
-type SidebarContextProviderProps = ChildrenProps
-type SidebarContextValue = {
+type TSidebarContextProviderProps = TChildrenProps
+type TSidebarContextValue = {
   sidebarOpened: boolean
   historyVisible: boolean
   toggleSidebarVisibility: () => void
   toggleHistoryVisibility: () => void
 }
 
-const SidebarContext = createContext<SidebarContextValue | null>(null)
+const SidebarContext = createContext<TSidebarContextValue | null>(null)
 const useSidebarContext = () => useContextValue({ SidebarContext })
 
-const SidebarContextProvider = ({ children }: SidebarContextProviderProps) => {
+const SidebarContextProvider = ({ children }: TSidebarContextProviderProps) => {
   const [historyVisible, setHistoryVisible] = useState(true)
   const [sidebarOpened, setSidebarOpened] = useState(true)
 

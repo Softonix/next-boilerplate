@@ -49,7 +49,7 @@ export const searchService = (() => {
     return wait(500)
   }
 
-  function getSearchChats({ signal }: Signal = {}) {
+  function getSearchChats({ signal }: TSignal = {}) {
     return client.GET('/api/search-chat/', { signal })
   }
 

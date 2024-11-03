@@ -4,12 +4,15 @@ import { AppDialog, AppDialogContent, AppDialogTitle } from '@/shared/ui'
 import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 import { SearchBox } from './search-box'
 
-type TNewThreadDialogProps = DialogDefaultProps
+type TNewThreadDialogProps = TDialogDefaultProps
 
 const NewThreadDialog = ({ closeDialog, ...props }: TNewThreadDialogProps) => {
   return (
     <AppDialog {...props}>
-      <AppDialogContent aria-describedby={undefined} className="max-w-[800px] w-full">
+      <AppDialogContent
+        aria-describedby={undefined}
+        className="max-w-[800px] w-full"
+      >
         <VisuallyHidden>
           <AppDialogTitle />
         </VisuallyHidden>

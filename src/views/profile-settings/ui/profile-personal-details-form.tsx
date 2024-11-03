@@ -5,16 +5,16 @@ import { isEqual } from 'lodash-es'
 import { useAuthContext } from '@/shared/lib/contexts'
 import { AppSeparator } from '@/shared/ui'
 
-type ProfilePersonalDetailsProps = {
-  onFinish: (values: PersonalDetailsSchema) => unknown
+type TProfilePersonalDetailsProps = {
+  onFinish: (values: TPersonalDetailsSchema) => unknown
   onValuesChange: (isNewValues: boolean) => unknown
 }
 
-type PersonalDetailsSchema = Pick<TUser, 'name' | 'phone_number'>
+type TPersonalDetailsSchema = Pick<TUser, 'name' | 'phone_number'>
 
-type ProfilePersonalDetailsFormRefValue = { reset: () => void }
+type TProfilePersonalDetailsFormRefValue = { reset: () => void }
 
-const ProfilePersonalDetailsForm = forwardRef<ProfilePersonalDetailsFormRefValue, ProfilePersonalDetailsProps>(
+const ProfilePersonalDetailsForm = forwardRef<TProfilePersonalDetailsFormRefValue, TProfilePersonalDetailsProps>(
   ({ onFinish, onValuesChange }, ref) => {
     const { user } = useAuthContext()
     const initialFormValues = useMemo(
@@ -24,14 +24,14 @@ const ProfilePersonalDetailsForm = forwardRef<ProfilePersonalDetailsFormRefValue
       }),
       [user]
     )
-    const [form] = AntForm.useForm<PersonalDetailsSchema>()
+    const [form] = AntForm.useForm<TPersonalDetailsSchema>()
 
     useImperativeHandle(ref, () => ({
       reset: () => form.resetFields(),
     }))
 
     return (
-      <AntForm<PersonalDetailsSchema>
+      <AntForm<TPersonalDetailsSchema>
         form={form}
         onFinish={onFinish}
         initialValues={initialFormValues}
@@ -44,8 +44,14 @@ const ProfilePersonalDetailsForm = forwardRef<ProfilePersonalDetailsFormRefValue
             <p className="text-xs mb-16 lg:mb-0">This will be displayed on your profile.</p>
           </div>
 
-          <AntForm.Item<PersonalDetailsSchema> name="name" noStyle>
-            <AntInput className="max-w-[480px] max-h-40" placeholder="Jane Doe" />
+          <AntForm.Item<TPersonalDetailsSchema>
+            name="name"
+            noStyle
+          >
+            <AntInput
+              className="max-w-[480px] max-h-40"
+              placeholder="Jane Doe"
+            />
           </AntForm.Item>
         </div>
 
@@ -57,8 +63,14 @@ const ProfilePersonalDetailsForm = forwardRef<ProfilePersonalDetailsFormRefValue
             <p className="text-xs mb-16 lg:mb-0">This will be displayed on your profile.</p>
           </div>
 
-          <AntForm.Item<PersonalDetailsSchema> name="phone_number" noStyle>
-            <AntInput className="mb-16 lg:mb-0 max-w-[480px] max-h-40" placeholder="+44 20 8029 1024" />
+          <AntForm.Item<TPersonalDetailsSchema>
+            name="phone_number"
+            noStyle
+          >
+            <AntInput
+              className="mb-16 lg:mb-0 max-w-[480px] max-h-40"
+              placeholder="+44 20 8029 1024"
+            />
           </AntForm.Item>
         </div>
       </AntForm>
@@ -66,4 +78,4 @@ const ProfilePersonalDetailsForm = forwardRef<ProfilePersonalDetailsFormRefValue
   }
 )
 
-export { ProfilePersonalDetailsForm, type PersonalDetailsSchema, type ProfilePersonalDetailsFormRefValue }
+export { ProfilePersonalDetailsForm, type TPersonalDetailsSchema, type TProfilePersonalDetailsFormRefValue }

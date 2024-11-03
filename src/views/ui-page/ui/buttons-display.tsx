@@ -4,7 +4,7 @@ import { Fragment } from 'react'
 import { capitalize, groupBy } from 'lodash-es'
 
 import { toasterService } from '@/shared/ui/toaster'
-import { AppButton, AppButtonProps, AppSection } from '@/shared/ui'
+import { AppButton, TAppButtonProps, AppSection } from '@/shared/ui'
 
 const ButtonsDisplay = () => {
   function generateButtonCombinations() {
@@ -12,7 +12,7 @@ const ButtonsDisplay = () => {
     const sizes = ['small', 'default'] as const
     const variants = [undefined, 'compact', 'circle'] as const
 
-    const combinations: Pick<AppButtonProps<'button'>, 'theme' | 'size' | 'variant'>[] = []
+    const combinations: Pick<TAppButtonProps<'button'>, 'theme' | 'size' | 'variant'>[] = []
 
     variants.forEach((variant) => {
       types.forEach((theme) => {
@@ -32,7 +32,10 @@ const ButtonsDisplay = () => {
   const buttonsConfig = groupBy(generateButtonCombinations(), 'variant')
   return (
     <>
-      <AppSection title="Buttons" gradientTitle>
+      <AppSection
+        title="Buttons"
+        gradientTitle
+      >
         {Object.entries(buttonsConfig).map(([variant, buttons]) => (
           <Fragment key={variant}>
             <p className="text-xl italic px-5 pb-8 mb-10 border-b-[1px] border-slate-300">
@@ -41,7 +44,11 @@ const ButtonsDisplay = () => {
 
             <div className="flex flex-wrap items-center gap-8 mb-20">
               {buttons.map((b) => (
-                <AppButton key={b.toString()} {...b} className={cn({ 'mr-20': b.size === 'default' })}>
+                <AppButton
+                  key={b.toString()}
+                  {...b}
+                  className={cn({ 'mr-20': b.size === 'default' })}
+                >
                   {b.variant ? <AppIconChat width="12" /> : 'Click'}
                 </AppButton>
               ))}
@@ -50,21 +57,36 @@ const ButtonsDisplay = () => {
         ))}
       </AppSection>
 
-      <AppSection title="Toasts" gradientTitle>
+      <AppSection
+        title="Toasts"
+        gradientTitle
+      >
         <div className="flex gap-x-10">
-          <AppButton theme="primary" onClick={() => toasterService.success('Success')}>
+          <AppButton
+            theme="primary"
+            onClick={() => toasterService.success('Success')}
+          >
             Success
           </AppButton>
 
-          <AppButton theme="secondary" onClick={() => toasterService.info('Info')}>
+          <AppButton
+            theme="secondary"
+            onClick={() => toasterService.info('Info')}
+          >
             Info
           </AppButton>
 
-          <AppButton theme="outlined" onClick={() => toasterService.warning('Warning')}>
+          <AppButton
+            theme="outlined"
+            onClick={() => toasterService.warning('Warning')}
+          >
             Warning
           </AppButton>
 
-          <AppButton theme="danger" onClick={() => toasterService.error('Erroneous error')}>
+          <AppButton
+            theme="danger"
+            onClick={() => toasterService.error('Erroneous error')}
+          >
             Error
           </AppButton>
         </div>

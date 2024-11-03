@@ -1,13 +1,13 @@
 import { SearchPrompt } from '@/entities/search'
 import { useDialogContext } from '@/shared/lib/contexts'
 
-export type SearchPromptListProps = {
+export type TSearchPromptListProps = {
   prompts: string[]
   onSearch?: (prompt: string) => unknown
-} & ChildrenProps<'children', { prompt: string }> &
-  ClassProps
+} & TChildrenProps<'children', { prompt: string }> &
+  TClassProps
 
-const SearchPromptList = ({ prompts, children, onSearch, className }: SearchPromptListProps) => {
+const SearchPromptList = ({ prompts, children, onSearch, className }: TSearchPromptListProps) => {
   const { openDialog } = useDialogContext()
 
   const handleSearch = (prompt: string) => {

@@ -4,7 +4,7 @@ import { authService } from '@/shared/auth'
 import { TAuthType } from '@/shared/types'
 import { AppButton, AppLoading } from '@/shared/ui'
 
-type AuthFormProps = {
+type TAuthFormProps = {
   type: TAuthType
   onSubmit: (values: TAuthSchema) => void
 }
@@ -14,7 +14,7 @@ type TAuthSchema = {
   name?: string
 }
 
-const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
+const AuthForm = ({ type, onSubmit }: TAuthFormProps) => {
   const [form] = AntForm.useForm<TAuthSchema>()
   const [loading, setLoading] = useState(false)
 
@@ -41,14 +41,25 @@ const AuthForm = ({ type, onSubmit }: AuthFormProps) => {
     <>
       {loading && <AppLoading />}
 
-      <AntForm<TAuthSchema> form={form} onFinish={submit}>
+      <AntForm<TAuthSchema>
+        form={form}
+        onFinish={submit}
+      >
         {fields.map((field) => (
-          <AntForm.Item<TAuthSchema> name={field.name} key={field.name} rules={[{ required: true }]}>
+          <AntForm.Item<TAuthSchema>
+            name={field.name}
+            key={field.name}
+            rules={[{ required: true }]}
+          >
             <AntInput placeholder={field.placeholder} />
           </AntForm.Item>
         ))}
 
-        <AppButton className="w-full" disabled={loading} type="submit">
+        <AppButton
+          className="w-full"
+          disabled={loading}
+          type="submit"
+        >
           {type === 'sign-in' ? 'Login' : 'Signup'}
         </AppButton>
       </AntForm>

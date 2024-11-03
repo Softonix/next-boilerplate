@@ -9,19 +9,22 @@ import { useDialogContext } from '@/shared/lib/contexts'
 import { AppDialog, AppDialogContent, AppDialogHeader, AppDialogTitle, AppSeparator, VisuallyHidden } from '@/shared/ui'
 import { authService } from '@/shared/auth'
 
-type AuthDialogProps = {
+type TAuthDialogProps = {
   authType: TAuthType
   setAuthType: (newAuthType: TAuthType) => unknown
-} & ChildrenProps<'trigger'> &
-  DialogDefaultProps
+} & TChildrenProps<'trigger'> &
+  TDialogDefaultProps
 
-const AuthDialog = ({ authType, closeDialog, ...props }: AuthDialogProps) => {
+const AuthDialog = ({ authType, closeDialog, ...props }: TAuthDialogProps) => {
   const { openDialog } = useDialogContext()
   const router = useRouter()
 
   return (
     <AppDialog {...props}>
-      <AppDialogContent aria-describedby={undefined} className="max-w-[430px]">
+      <AppDialogContent
+        aria-describedby={undefined}
+        className="max-w-[430px]"
+      >
         <VisuallyHidden>
           <AppDialogTitle />
         </VisuallyHidden>
@@ -36,7 +39,10 @@ const AuthDialog = ({ authType, closeDialog, ...props }: AuthDialogProps) => {
 
           <AuthProvidersBtns onClick={authService.signInWithProvider} />
 
-          <AppSeparator label="or" className="my-25" />
+          <AppSeparator
+            label="or"
+            className="my-25"
+          />
 
           <AuthForm
             type={authType}
@@ -61,4 +67,4 @@ const AuthDialog = ({ authType, closeDialog, ...props }: AuthDialogProps) => {
   )
 }
 
-export { AuthDialog, type AuthDialogProps }
+export { AuthDialog, type TAuthDialogProps }

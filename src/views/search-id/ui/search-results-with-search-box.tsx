@@ -10,11 +10,11 @@ import { useIsElementInViewport } from '@/shared/lib/hooks'
 import { SearchResult } from '@/widgets/search-result'
 import { useSearchResults } from '@/widgets/search-result/lib/search-results.hook'
 
-type SearchResultsWithSearchBoxProps = {
+type TSearchResultsWithSearchBoxProps = {
   searchId: string
 }
 
-const SearchResultsWithSearchBox = ({ searchId }: SearchResultsWithSearchBoxProps) => {
+const SearchResultsWithSearchBox = ({ searchId }: TSearchResultsWithSearchBoxProps) => {
   const { setIsLoading } = usePageLoadingContext()
   const isDesktop = useMediaQuery('(min-width: 1024px)')
   const { searchResults, fetchPreviousResult, handleNewPropmt, hasPreviousResult } = useSearchResults({ searchId })

@@ -12,7 +12,7 @@ import { processCarMileage, processCarTitle, TCarDetailsResponse } from '@/entit
 
 type TCarDetailsProps = {
   carDetails: TCarDetailsResponse
-} & ClassProps
+} & TClassProps
 
 const CarDetails = ({ carDetails, className }: TCarDetailsProps) => {
   const carTitle = processCarTitle(carDetails)

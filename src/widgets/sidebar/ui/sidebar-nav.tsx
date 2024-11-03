@@ -3,21 +3,21 @@
 import React from 'react'
 import { useSidebarContext } from '../lib/sidebar-context-provider'
 import { AppButton, AppPingIndicator } from '@/shared/ui'
-import { NavItem, useNavItems } from '@/shared/lib/hooks'
+import { TNavItem, useNavItems } from '@/shared/lib/hooks'
 
-type SidebarNavProps = {
+type TSidebarNavProps = {
   isSidebarOpened: boolean
   onToggleSearchHistory?: () => unknown
 }
 
-const SidebarNav = ({ isSidebarOpened }: SidebarNavProps) => {
+const SidebarNav = ({ isSidebarOpened }: TSidebarNavProps) => {
   const hasUnreadMessagesFromDealer = true
   const navList = useNavItems()
   const router = useRouter()
 
   const { toggleHistoryVisibility } = useSidebarContext()
 
-  function onNavMenuClick(item: NavItem) {
+  function onNavMenuClick(item: TNavItem) {
     const { path, isActive } = item
     if (path === '/search/history') {
       toggleHistoryVisibility()

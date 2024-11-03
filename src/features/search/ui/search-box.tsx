@@ -7,9 +7,9 @@ type TSearchBoxProps = {
   autoFocus?: boolean
   placeholder?: string
   onSearch?: (message: string) => unknown
-} & ClassProps
+} & TClassProps
 
-type SearchBoxSchema = {
+type TSearchBoxSchema = {
   message: string
 }
 
@@ -21,14 +21,14 @@ const SearchBox = ({
   autoFocus = true,
 }: TSearchBoxProps) => {
   const { openDialog } = useDialogContext()
-  const [form] = AntForm.useForm<SearchBoxSchema>()
+  const [form] = AntForm.useForm<TSearchBoxSchema>()
   const search = useCarSearch()
 
   const openZipCodeDialog = () => {
     openDialog('zip-code-dialog')
   }
 
-  const onFinish = (values: SearchBoxSchema) => {
+  const onFinish = (values: TSearchBoxSchema) => {
     const formattedMessage = values.message.trim()
 
     if (!hasGeoCookiesSet()) {
@@ -46,7 +46,7 @@ const SearchBox = ({
   }
 
   return (
-    <AntForm<SearchBoxSchema>
+    <AntForm<TSearchBoxSchema>
       form={form}
       autoComplete="off"
       onFinish={onFinish}
@@ -55,7 +55,7 @@ const SearchBox = ({
         ['message']: '',
       }}
     >
-      <AntForm.Item<SearchBoxSchema>
+      <AntForm.Item<TSearchBoxSchema>
         name="message"
         style={{ marginBottom: 0 }}
       >
@@ -89,4 +89,4 @@ const SearchBox = ({
   )
 }
 
-export { SearchBox, type TSearchBoxProps as SearchBoxProps, type SearchBoxSchema }
+export { SearchBox, type TSearchBoxProps as SearchBoxProps, type TSearchBoxSchema }

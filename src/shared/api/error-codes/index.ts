@@ -1,4 +1,4 @@
-interface IError {
+type TError = {
   code: number
   message: string
 }
@@ -19,7 +19,7 @@ export const codes = {
 function getHashedCodes() {
   return Object.values(codes).reduce((acc, currCodeMeta) => {
     return { ...acc, [currCodeMeta.code]: currCodeMeta }
-  }, {} as IndexedObject<IError>)
+  }, {} as TIndexedObject<TError>)
 }
 
 export function getErrorMessage(_code: string) {

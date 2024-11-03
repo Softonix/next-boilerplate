@@ -1,15 +1,21 @@
 import { TSearchResultResponse } from '../lib/types'
 import { SearchResultGroup } from './search-result-group'
 
-type GroupedSearchResultProps = {
+type TGroupedSearchResultProps = {
   groupedCars: TSearchResultResponse['groupedCars']
 }
 
-const GroupedSearchResult = ({ groupedCars }: GroupedSearchResultProps) => {
+const GroupedSearchResult = ({ groupedCars }: TGroupedSearchResultProps) => {
   return groupedCars?.map((cars, title) => {
     return (
-      <div key={title} className="mb-35 last:mb-0">
-        <SearchResultGroup title={cars.name} cars={cars.cars} />
+      <div
+        key={title}
+        className="mb-35 last:mb-0"
+      >
+        <SearchResultGroup
+          title={cars.name}
+          cars={cars.cars}
+        />
       </div>
     )
   })

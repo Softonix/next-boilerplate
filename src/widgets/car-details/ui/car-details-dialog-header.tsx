@@ -2,12 +2,12 @@ import { AppButton } from '@/shared/ui'
 import { toasterService } from '@/shared/ui/toaster'
 import { useCopyToClipboard } from 'usehooks-ts'
 
-type CarDetailsDialogHeaderProps = {
+type TCarDetailsDialogHeaderProps = {
   onGoBack?: () => unknown
   carId: string
 }
 
-const CarDetailsDialogHeader = ({ carId, onGoBack }: CarDetailsDialogHeaderProps) => {
+const CarDetailsDialogHeader = ({ carId, onGoBack }: TCarDetailsDialogHeaderProps) => {
   const [, copy] = useCopyToClipboard()
 
   const copyCarDetailsURL = () =>

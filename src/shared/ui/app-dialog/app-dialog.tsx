@@ -3,12 +3,12 @@
 import * as React from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 
-type AppDialogProps = DialogPrimitive.DialogProps
-type DialogInstanceContextValue = {
+type TAppDialogProps = DialogPrimitive.DialogProps
+type TDialogInstanceContextValue = {
   closeDialog?: () => void
 }
 
-export const DialogInstanceContext = createContext<Nullable<DialogInstanceContextValue>>(null)
+export const DialogInstanceContext = createContext<TNullable<TDialogInstanceContextValue>>(null)
 
 const AppDialog = DialogPrimitive.Root
 const AppDialogTrigger = DialogPrimitive.Trigger
@@ -31,12 +31,18 @@ const AppDialogOverlay = React.forwardRef<
 AppDialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
 const AppDialogHeader = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)} {...props} />
+  <div
+    className={cn('flex flex-col space-y-1.5 text-center sm:text-left', className)}
+    {...props}
+  />
 )
 AppDialogHeader.displayName = 'AppDialogHeader'
 
 const AppDialogFooter = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-8', className)} {...props} />
+  <div
+    className={cn('flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-8', className)}
+    {...props}
+  />
 )
 AppDialogFooter.displayName = 'AppDialogFooter'
 
@@ -56,12 +62,16 @@ const AppDialogDescription = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Description>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
 >(({ className, ...props }, ref) => (
-  <DialogPrimitive.Description ref={ref} className={cn('text-sm text-muted-foreground', className)} {...props} />
+  <DialogPrimitive.Description
+    ref={ref}
+    className={cn('text-sm text-muted-foreground', className)}
+    {...props}
+  />
 ))
 AppDialogDescription.displayName = DialogPrimitive.Description.displayName
 
 export {
-  type AppDialogProps,
+  type TAppDialogProps,
   AppDialog,
   AppDialogPortal,
   AppDialogOverlay,

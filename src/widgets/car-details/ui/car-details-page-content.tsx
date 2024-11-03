@@ -5,17 +5,20 @@ import { CarDetailsDialogHeader } from './car-details-dialog-header'
 import { CarDetails } from './car-details'
 import { TCarDetailsResponse } from '@/entities/car'
 
-type CarDetailsPageContentProps = {
-  carDetails: Optional<TCarDetailsResponse>
+type TCarDetailsPageContentProps = {
+  carDetails: TOptional<TCarDetailsResponse>
 }
 
-const CarDetailsPageContent = ({ carDetails }: CarDetailsPageContentProps) => {
+const CarDetailsPageContent = ({ carDetails }: TCarDetailsPageContentProps) => {
   const router = useRouter()
   return (
     <PageWrapper classNames={{ root: 'max-w-[1400px] mx-auto' }}>
       {carDetails && (
         <>
-          <CarDetailsDialogHeader carId={carDetails.id} onGoBack={router.back} />
+          <CarDetailsDialogHeader
+            carId={carDetails.id}
+            onGoBack={router.back}
+          />
           <CarDetails carDetails={carDetails} />
         </>
       )}

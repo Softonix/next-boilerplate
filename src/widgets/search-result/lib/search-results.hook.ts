@@ -52,7 +52,7 @@ export const useSearchResults = ({ searchId }: TUseSearchResultsOptions) => {
     return getHistoryResultById(pageParam).then(({ data }) => data)
   }
 
-  function getReversedHistory(_searchResult: Optional<TSearchResultResponse>) {
+  function getReversedHistory(_searchResult: TOptional<TSearchResultResponse>) {
     return _searchResult?.searchResultIds?.toReversed()
   }
 

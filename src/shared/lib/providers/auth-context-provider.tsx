@@ -1,70 +1,25 @@
 'use client'
 
-import { authService } from '@/shared/auth'
 import { TUser } from '@/shared/types'
-import { toasterService } from '@/shared/ui/toaster'
 import { UpdateUserAttributesInput } from 'aws-amplify/auth'
+import { useMagicLink, useUser } from '../hooks'
 
-export type AuthContextValue = {
-  user: Optional<TUser>
+export type TAuthContextValue = {
+  user: TOptional<TUser>
   isAuthenticated: boolean
   getUser: () => Promise<void>
   updateUser: (user: UpdateUserAttributesInput) => Promise<unknown>
 }
 
-export const AuthContext = createContext<null | AuthContextValue>(null)
+export const AuthContext = createContext<null | TAuthContextValue>(null)
 
-type AuthProviderProps = ChildrenProps & {
-  defaultUser?: Optional<TUser>
+type TAuthProviderProps = TChildrenProps & {
+  defaultUser?: TOptional<TUser>
 }
 
-const AuthProvider = ({ children, defaultUser }: AuthProviderProps) => {
-  const [user, setUser] = useState<Optional<TUser>>(defaultUser)
-  const isAuthenticated = !!user
-  const router = useRouter()
-  const searchParams = useSearchParams()
-
-  const getUser = useCallback(async () => {
-    if (!(await authService.verifySession())) return
-    return authService
-      .fetchUserAttrs()
-      .then((user) => setUser(user))
-      .catch((error) => console.error(error.message))
-  }, [])
-
-  const updateUser = useCallback(
-    (_user: UpdateUserAttributesInput, message = 'User data successfully updated.') =>
-      authService
-        .updateUserAttributes(_user)
-        .then(() => {
-          setUser(
-            (prev) =>
-              ({
-                ...prev,
-                ..._user.userAttributes,
-              }) as TUser
-          )
-        })
-        .then(() => toasterService.success(message))
-        .catch((err) => toasterService.error(err.message)),
-    []
-  )
-
-  // magic link handler
-  useEffect(() => {
-    const token: Optional<string> = searchParams?.get('token')
-    const email: Optional<string> = searchParams?.get('email')
-    if (token && email && !isAuthenticated) {
-      authService
-        .handleSignIn(token, email)
-        .then(getUser)
-        .then(() => router.replace('/'))
-    }
-  }, [])
-
-  useEffect(() => {
-    getUser()
-  }, [getUser])
+const AuthProvider = ({ children, defaultUser }: TAuthProviderProps) => {
+  const { user, isAuthenticated, updateUser, getUser } = useUser({ defaultUser })
+  useMagicLink({ isAuthenticated, afterSignIn: getUser })
 
   return (
     <AuthContext.Provider

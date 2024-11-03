@@ -2,14 +2,14 @@
 
 import { TSearchQuest } from '../lib/types'
 
-type SearchQuestProps = {
+type TSearchQuestProps = {
   quest: TSearchQuest
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
-} & ChildrenProps &
-  ChildrenProps<'icon'> &
-  ClassProps
+} & TChildrenProps &
+  TChildrenProps<'icon'> &
+  TClassProps
 
-const SearchQuest = forwardRef<HTMLDivElement, SearchQuestProps>(
+const SearchQuest = forwardRef<HTMLDivElement, TSearchQuestProps>(
   ({ children, quest, icon, className, onClick }, ref) => {
     return (
       <div

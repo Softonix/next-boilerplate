@@ -3,9 +3,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-type ReactQueryClientProviderProps = {} & ChildrenProps
+type TReactQueryClientProviderProps = {} & TChildrenProps
 
-function ReactQueryClientProvider({ children }: ReactQueryClientProviderProps) {
+function ReactQueryClientProvider({ children }: TReactQueryClientProviderProps) {
   const [queryClient] = useState(() => new QueryClient())
 
   return (

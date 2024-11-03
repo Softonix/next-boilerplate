@@ -1,12 +1,12 @@
 import { TCarDetailsResponse } from '@/entities/car'
 import { SearchResultCar } from './search-result-car'
 
-type SearchResultGroupProps = {
+type TSearchResultGroupProps = {
   title: string | number
   cars: TCarDetailsResponse[]
 }
 
-const SearchResultGroup = ({ title, cars }: SearchResultGroupProps) => {
+const SearchResultGroup = ({ title, cars }: TSearchResultGroupProps) => {
   const PAGINATION_STEP = 15
   const [carsListLimit, setCarsListLimit] = useState(0)
   const carsListForGrid = cars.slice(0, PAGINATION_STEP + carsListLimit)

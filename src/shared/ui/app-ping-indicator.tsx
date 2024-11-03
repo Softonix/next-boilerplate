@@ -1,4 +1,4 @@
-const AppPingIndicator = ({ className }: ClassProps) => {
+const AppPingIndicator = ({ className }: TClassProps) => {
   return (
     <div className={cn(className)}>
       <span className="relative flex h-6 w-6">

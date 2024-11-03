@@ -1,11 +1,14 @@
 import { AppDialog, AppDialogContent, AppDialogTitle, VisuallyHidden } from '@/shared/ui'
 
-type BlankDialogProps = DialogDefaultProps
+type TBlankDialogProps = TDialogDefaultProps
 
-const BlankDialog = ({ children, ...props }: BlankDialogProps) => {
+const BlankDialog = ({ children, ...props }: TBlankDialogProps) => {
   return (
     <AppDialog {...props}>
-      <AppDialogContent aria-describedby={undefined} className="w-[700px]">
+      <AppDialogContent
+        aria-describedby={undefined}
+        className="w-[700px]"
+      >
         <VisuallyHidden>
           <AppDialogTitle />
         </VisuallyHidden>
@@ -16,4 +19,4 @@ const BlankDialog = ({ children, ...props }: BlankDialogProps) => {
   )
 }
 
-export { BlankDialog, type BlankDialogProps }
+export { BlankDialog, type TBlankDialogProps }

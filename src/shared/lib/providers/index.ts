@@ -1,6 +1,6 @@
 export { DeviceContext, DeviceProvider } from './device-provider'
 export { PageLoadingContext, PageLoadingProvider } from './page-loading-provider'
-export { AuthContext, AuthProvider, type AuthContextValue } from './auth-context-provider'
+export { AuthContext, AuthProvider, type TAuthContextValue } from './auth-context-provider'
 
 export {
   DialogContext,

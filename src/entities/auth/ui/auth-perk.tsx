@@ -5,7 +5,7 @@ type TAuthPerkProps = {
   title: string
   description: string
   contentClassName?: string
-} & ClassProps
+} & TClassProps
 
 export const AuthPerk = ({ icon, title, description, className, contentClassName }: TAuthPerkProps) => {
   return (

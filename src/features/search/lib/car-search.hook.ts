@@ -10,15 +10,15 @@ export const useCarSearch = () => {
   const { createSearchChat, addNewPromptToChat } = searchService
   const { updateSearchHistory } = useSearchHistory()
 
-  interface IOptions {
+  type TOptions = {
     chatId?: string
     blockRedirect?: boolean
     blockLoading?: boolean
   }
 
-  async function sendNewSearchMessage(message: string, options?: IOptions) {
+  async function sendNewSearchMessage(message: string, options?: TOptions) {
     try {
-      let searchResultId: Optional<string>
+      let searchResultId: TOptional<string>
 
       if (!options?.blockLoading) {
         setIsLoading(true)

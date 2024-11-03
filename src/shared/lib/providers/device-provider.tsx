@@ -2,17 +2,17 @@
 
 type TDeviceProviderProps = {
   deviceFlags: ReturnType<(typeof import('@/shared/lib/utils/server'))['getDeviceFlags']>
-} & ChildrenProps
+} & TChildrenProps
 
-type DeviceContextValue = {
+type TDeviceContextValue = {
   isMobile: boolean
   isDesktopOrTablet: boolean
 }
 
-const DeviceContext = createContext<DeviceContextValue | null>(null)
+const DeviceContext = createContext<TDeviceContextValue | null>(null)
 
 const DeviceProvider = ({ children, deviceFlags }: TDeviceProviderProps) => {
   return <DeviceContext.Provider value={deviceFlags}>{children}</DeviceContext.Provider>
 }
 
-export { DeviceProvider, DeviceContext, type DeviceContextValue }
+export { DeviceProvider, DeviceContext, type TDeviceContextValue }

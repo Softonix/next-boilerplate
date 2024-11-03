@@ -1409,6 +1409,55 @@ export interface paths {
       };
     };
   };
+  "/api/public/search-chat/": {
+    post: {
+      requestBody: {
+        content: {
+          "application/json": {
+            message: string;
+          };
+        };
+      };
+      responses: {
+        /** @description Default Response */
+        200: {
+          content: {
+            "application/json": {
+              /** Format: uuid */
+              searchResultId: string;
+            };
+          };
+        };
+      };
+    };
+  };
+  "/api/public/search-chat/{chatId}/message": {
+    post: {
+      parameters: {
+        path: {
+          chatId: string;
+        };
+      };
+      requestBody: {
+        content: {
+          "application/json": {
+            message: string;
+          };
+        };
+      };
+      responses: {
+        /** @description Default Response */
+        200: {
+          content: {
+            "application/json": {
+              /** Format: uuid */
+              searchResultId: string;
+            };
+          };
+        };
+      };
+    };
+  };
   "/api/public/search-result/history/{searchResultId}": {
     get: {
       parameters: {
@@ -1478,55 +1527,6 @@ export interface paths {
               }) | null;
               followUpQuestions?: string[] | null;
               searchResultIds?: string[] | null;
-            };
-          };
-        };
-      };
-    };
-  };
-  "/api/public/search-chat/": {
-    post: {
-      requestBody: {
-        content: {
-          "application/json": {
-            message: string;
-          };
-        };
-      };
-      responses: {
-        /** @description Default Response */
-        200: {
-          content: {
-            "application/json": {
-              /** Format: uuid */
-              searchResultId: string;
-            };
-          };
-        };
-      };
-    };
-  };
-  "/api/public/search-chat/{chatId}/message": {
-    post: {
-      parameters: {
-        path: {
-          chatId: string;
-        };
-      };
-      requestBody: {
-        content: {
-          "application/json": {
-            message: string;
-          };
-        };
-      };
-      responses: {
-        /** @description Default Response */
-        200: {
-          content: {
-            "application/json": {
-              /** Format: uuid */
-              searchResultId: string;
             };
           };
         };

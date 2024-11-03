@@ -1,11 +1,11 @@
 import { paymentPlans } from '@/shared/lib/constants'
 import { AppButton } from '@/shared/ui'
 
-type ProfileBillingInfoProps = {
+type TProfileBillingInfoProps = {
   onUpdateSubscriptionPlan?: () => void
 }
 
-const ProfileBillingInfo = ({}: ProfileBillingInfoProps) => {
+const ProfileBillingInfo = ({}: TProfileBillingInfoProps) => {
   return (
     <>
       <div className="flex gap-x-12 mb-16">
@@ -39,7 +39,10 @@ const ProfileBillingInfo = ({}: ProfileBillingInfoProps) => {
 
             <ul className="space-y-8 mb-12 md:mb-20">
               {options.map((option) => (
-                <li key={option} className="flex items-center gap-x-7">
+                <li
+                  key={option}
+                  className="flex items-center gap-x-7"
+                >
                   <AppIconCheckmark className="text-primary w-14 h-14" />
                   <span className="text-xs md:text-sm">{option}</span>
                 </li>

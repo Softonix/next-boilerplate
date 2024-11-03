@@ -1,14 +1,17 @@
 import { AppButton } from '@/shared/ui'
 
-type SidebarMainLogoProps = {
+type TSidebarMainLogoProps = {
   isSidebarOpened: boolean
   onArrowIconClick: () => void
 }
 
-const SidebarMainLogo = ({ isSidebarOpened, onArrowIconClick }: SidebarMainLogoProps) => {
+const SidebarMainLogo = ({ isSidebarOpened, onArrowIconClick }: TSidebarMainLogoProps) => {
   return (
     <div className={cn('flex items-center justify-between mb-24', isSidebarOpened ? 'gap-x-8' : 'flex-col')}>
-      <NextLink href="/" className="flex shrink-0">
+      <NextLink
+        href="/"
+        className="flex shrink-0"
+      >
         <NextImage
           src="/images/full-logo-2.png"
           width={143}

@@ -1,6 +1,6 @@
 export type TAuthProviders = 'Google' | 'Apple'
 
-export type TAuthType = Optional<'sign-in' | 'sign-up'>
+export type TAuthType = TOptional<'sign-in' | 'sign-up'>
 
 export type TUser = {
   email?: string

@@ -1,6 +1,6 @@
 import { useAuthContext } from '../contexts'
 
-export type NavItem = {
+export type TNavItem = {
   name: string
   path: string
   icon: React.ReactNode
@@ -13,7 +13,7 @@ export const useNavItems = () => {
   const pathname = usePathname()
   const { isAuthenticated } = useAuthContext()
 
-  const navList: NavItem[] = [
+  const navList: TNavItem[] = [
     {
       name: 'Home',
       path: '/',

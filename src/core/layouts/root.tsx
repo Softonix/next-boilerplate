@@ -35,7 +35,10 @@ export async function RootLayout({
           'bg-secondary': isDesktopOrTablet,
         })}
       >
-        <NextTopLoader color={appColors.primary} showSpinner={false} />
+        <NextTopLoader
+          color={appColors.primary}
+          showSpinner={false}
+        />
 
         {/* This icon is important to always be present in the DOM to source gradient for all other icons */}
 
@@ -49,11 +52,11 @@ export async function RootLayout({
           <AuthProvider defaultUser={user}>
             <DeviceProvider deviceFlags={getDeviceFlags()}>
               <ReactQueryClientProvider>
-                <DialogContextProvider>
-                  <GlobalAntConfigProvider>
+                <GlobalAntConfigProvider>
+                  <DialogContextProvider>
                     <SidebarContextProvider>{children}</SidebarContextProvider>
-                  </GlobalAntConfigProvider>
-                </DialogContextProvider>
+                  </DialogContextProvider>
+                </GlobalAntConfigProvider>
               </ReactQueryClientProvider>
             </DeviceProvider>
           </AuthProvider>

@@ -1,13 +1,13 @@
 import { AppSeparator } from '@/shared/ui'
-import { SearchPromptsProps } from './search-prompts'
+import { TSearchPromptsProps } from './search-prompts'
 import { SearchPromptList } from '@/entities/search'
 
-type SearchResultRelatedPromptsProps = {
+type TSearchResultRelatedPromptsProps = {
   followUpQuestions: any
-  onSearch?: SearchPromptsProps['onSearch']
+  onSearch?: TSearchPromptsProps['onSearch']
 }
 
-const SearchResultRelatedPrompts = ({ onSearch, followUpQuestions }: SearchResultRelatedPromptsProps) => {
+const SearchResultRelatedPrompts = ({ onSearch, followUpQuestions }: TSearchResultRelatedPromptsProps) => {
   return (
     <>
       <AppSeparator className="my-24 lg:my-32" />
@@ -17,7 +17,11 @@ const SearchResultRelatedPrompts = ({ onSearch, followUpQuestions }: SearchResul
         <span className="font-medium text-black">Related</span>
       </div>
 
-      <SearchPromptList className="lg:columns-2" prompts={followUpQuestions} onSearch={onSearch}>
+      <SearchPromptList
+        className="lg:columns-2"
+        prompts={followUpQuestions}
+        onSearch={onSearch}
+      >
         {({ prompt }) => <span className="truncate">{prompt}</span>}
       </SearchPromptList>
     </>

@@ -1,11 +1,11 @@
 import { AuthProviderBtn } from '@/entities/auth'
 import { TAuthProviders } from '@/shared/types'
 
-type AuthProvidersBtnsProps = {
+type TAuthProvidersBtnsProps = {
   onClick: (provider: TAuthProviders) => unknown
 }
 
-const AuthProvidersBtns = ({ onClick }: AuthProvidersBtnsProps) => {
+const AuthProvidersBtns = ({ onClick }: TAuthProvidersBtnsProps) => {
   return (
     <>
       <AuthProviderBtn

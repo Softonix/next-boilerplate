@@ -8,7 +8,7 @@ import { SidebarNav } from './sidebar-nav'
 import { NewThreadBtn } from '@/features/search'
 import { SidebarProfileActionButtons } from './sidebar-profile-action-buttons'
 
-const Sidebar = ({ children }: ChildrenProps) => {
+const Sidebar = ({ children }: TChildrenProps) => {
   const { openDialog } = useDialogContext()
   const { isAuthenticated } = useAuthContext()
   const { sidebarOpened, toggleSidebarVisibility } = useSidebarContext()
@@ -25,19 +25,30 @@ const Sidebar = ({ children }: ChildrenProps) => {
         { 'w-[296px] px-24': sidebarOpened },
       ])}
     >
-      <SidebarMainLogo isSidebarOpened={sidebarOpened} onArrowIconClick={toggleSidebarVisibility} />
+      <SidebarMainLogo
+        isSidebarOpened={sidebarOpened}
+        onArrowIconClick={toggleSidebarVisibility}
+      />
 
       <div
         className={cn('flex flex-col', {
           'items-center space-y-10 px-12': !sidebarOpened,
         })}
       >
-        <NewThreadBtn isSidebarOpened={sidebarOpened} onClick={openNewThreadDialog} />
+        <NewThreadBtn
+          isSidebarOpened={sidebarOpened}
+          onClick={openNewThreadDialog}
+        />
 
         <SidebarNav isSidebarOpened={sidebarOpened} />
 
         {!isAuthenticated && sidebarOpened && (
-          <AppButton className="flex w-full mt-24" tag="Link" replace href="?auth=sign-up">
+          <AppButton
+            className="flex w-full mt-24"
+            tag="Link"
+            replace
+            href="?auth=sign-up"
+          >
             <span className="shrink-0">Sign Up</span>
           </AppButton>
         )}

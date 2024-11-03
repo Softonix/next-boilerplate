@@ -6,9 +6,9 @@ import { useAuthDialog } from '@/widgets/auth-dialog'
 import { Sidebar, useSidebarContext } from '@/widgets/sidebar'
 import React from 'react'
 
-type ExtendedSidebarProps = {} & ChildrenProps
+type TExtendedSidebarProps = {} & TChildrenProps
 
-const ExtendedSidebar = ({}: ExtendedSidebarProps) => {
+const ExtendedSidebar = ({}: TExtendedSidebarProps) => {
   useAuthDialog()
   const { isDesktopOrTablet } = useDeviceContext()
   const { historyVisible, sidebarOpened } = useSidebarContext()

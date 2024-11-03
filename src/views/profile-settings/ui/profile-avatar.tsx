@@ -2,12 +2,12 @@ import { useAuthContext } from '@/shared/lib/contexts'
 import { AppButton } from '@/shared/ui'
 import React from 'react'
 
-type ProfileAvatarProps = {
+type TProfileAvatarProps = {
   saveButtonVisible: boolean
   saveButtonDisabled: boolean
 }
 
-const ProfileAvatar = ({ saveButtonDisabled, saveButtonVisible }: ProfileAvatarProps) => {
+const ProfileAvatar = ({ saveButtonDisabled, saveButtonVisible }: TProfileAvatarProps) => {
   const { user } = useAuthContext()
 
   const userNameAbbreviation = useMemo(() => {
@@ -27,7 +27,10 @@ const ProfileAvatar = ({ saveButtonDisabled, saveButtonVisible }: ProfileAvatarP
         {user?.name ? (
           <span className="text-2xl md:text-4xl lg:text-5xl">{userNameAbbreviation}</span>
         ) : (
-          <AppIconUserPlaceholder v-else className="w-40 h-40 md:w-[60px] md:h-[60px]" />
+          <AppIconUserPlaceholder
+            v-else
+            className="w-40 h-40 md:w-[60px] md:h-[60px]"
+          />
         )}
       </div>
 
@@ -41,7 +44,11 @@ const ProfileAvatar = ({ saveButtonDisabled, saveButtonVisible }: ProfileAvatarP
         </div>
 
         {saveButtonVisible && (
-          <AppButton className="shrink-0 max-h-40" disabled={saveButtonDisabled} form="personal-details-form">
+          <AppButton
+            className="shrink-0 max-h-40"
+            disabled={saveButtonDisabled}
+            form="personal-details-form"
+          >
             Save changes
           </AppButton>
         )}

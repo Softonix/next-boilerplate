@@ -1,6 +1,6 @@
 // https://medium.com/@teh_builder/ref-objects-inside-useeffect-hooks-eb7c15198780
 
-export const useIsElementInViewport = <T extends Optional<HTMLElement>>() => {
+export const useIsElementInViewport = <T extends TOptional<HTMLElement>>() => {
   const ref = useRef<T>()
 
   const [isElementInViewport, setIsElementInViewport] = useState(false)

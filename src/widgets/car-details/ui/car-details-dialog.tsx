@@ -4,16 +4,23 @@ import { CarDetails } from './car-details'
 import { TCarDetailsRequest } from '@/entities/car'
 import { useCarDetails } from '../lib/car-details.hook'
 
-type TCarDetailsDialogProps = { carId: TCarDetailsRequest } & DialogDefaultProps
+type TCarDetailsDialogProps = { carId: TCarDetailsRequest } & TDialogDefaultProps
 
 const CarDetailsDialog = ({ closeDialog, carId, ...props }: TCarDetailsDialogProps) => {
   const { carDetails, isLoading } = useCarDetails({ carId })
 
   return (
     <AppDialog {...props}>
-      <AppDialogContent className="max-w-[1100px] gap-0 min-h-full" withCloseButton={false} center={false}>
+      <AppDialogContent
+        className="max-w-[1100px] gap-0 min-h-full"
+        withCloseButton={false}
+        center={false}
+      >
         <AppDialogTitle>
-          <CarDetailsDialogHeader carId={carId} onGoBack={closeDialog} />
+          <CarDetailsDialogHeader
+            carId={carId}
+            onGoBack={closeDialog}
+          />
         </AppDialogTitle>
 
         {isLoading && <AppLoading />}

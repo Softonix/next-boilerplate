@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import * as React from 'react'
 
-export type AppButtonTag = 'button' | 'Link' | 'a'
+export type TAppButtonTag = 'button' | 'Link' | 'a'
 
-export type AppButtonProps<Tag extends AppButtonTag> = ClassProps & {
+export type TAppButtonProps<Tag extends TAppButtonTag> = TClassProps & {
   tag?: Tag
   theme?: 'primary' | 'secondary' | 'danger' | 'outlined' | 'transparent'
   size?: 'small' | 'default'

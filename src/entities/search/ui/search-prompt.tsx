@@ -1,13 +1,13 @@
 import { ReactNode } from 'react'
 
-type SearchPromptProps = {
+type TSearchPromptProps = {
   prompt: string
   onClick: () => void
   icon?: ReactNode
   renderPrompt?: (prompt: string) => ReactNode
-} & ClassProps
+} & TClassProps
 
-const SearchPrompt = ({ prompt, onClick, renderPrompt, className, icon }: SearchPromptProps) => {
+const SearchPrompt = ({ prompt, onClick, renderPrompt, className, icon }: TSearchPromptProps) => {
   return (
     <li
       className={cn(

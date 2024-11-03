@@ -2,7 +2,7 @@ import { AntdRegistry } from '@ant-design/nextjs-registry'
 import { defaultAppFont } from '@/shared/lib/constants'
 import { appColors } from '../styles/tailwind/app.colors'
 
-export const GlobalAntConfigProvider = ({ children }: ChildrenProps) => {
+export const GlobalAntConfigProvider = ({ children }: TChildrenProps) => {
   return (
     <AntConfigProvider
       theme={{

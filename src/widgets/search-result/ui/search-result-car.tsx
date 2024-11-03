@@ -6,11 +6,11 @@ import { AppImage } from '@/shared/ui'
 import { processCarMileage, processCarTitle, TCarDetailsResponse } from '@/entities/car'
 import { useGeolocation } from '@/features/set-geo-location'
 
-type SearchResultCarProps = {
+type TSearchResultCarProps = {
   car: TCarDetailsResponse
 }
 
-const SearchResultCar = ({ car }: SearchResultCarProps) => {
+const SearchResultCar = ({ car }: TSearchResultCarProps) => {
   const router = useRouter()
   const { openDialog } = useDialogContext()
   const isDesktop = useMediaQuery('(min-width: 1024px)')
@@ -73,4 +73,4 @@ const SearchResultCar = ({ car }: SearchResultCarProps) => {
   )
 }
 
-export { SearchResultCar, type SearchResultCarProps }
+export { SearchResultCar, type TSearchResultCarProps }

@@ -1,24 +1,24 @@
-type ChildrenProps<
+type TChildrenProps<
   Key extends string = 'children',
   Props = never,
-  T = IsNever<Props> extends true ? React.ReactNode : (props: Props) => React.ReactNode,
+  T = TIsNever<Props> extends true ? React.ReactNode : (props: Props) => React.ReactNode,
 > = Partial<Record<Key, T>>
 
-type ClassProps = { className?: import('clsx').ClassValue }
+type TClassProps = { className?: import('clsx').ClassValue }
 
-type AsChildProps<DefaultElementProps> =
+type TAsChildProps<DefaultElementProps> =
   | ({ asChild?: false } & DefaultElementProps)
   | { asChild: true; children: React.ReactNode }
 
-type Optional<T> = null | undefined | T
-type Nullable<T> = null | T
-type IsNever<T> = [T] extends [never] ? true : false
-type IndexedObject<T> = Record<string, T>
+type TOptional<T> = null | undefined | T
+type TNullable<T> = null | T
+type TIsNever<T> = [T] extends [never] ? true : false
+type TIndexedObject<T> = Record<string, T>
 
-type DialogDefaultProps = {
+type TDialogDefaultProps = {
   closeDialog?: () => void
   open?: boolean
-} & ChildrenProps<'trigger'> &
-  import('@/shared/ui').AppDialogProps
+} & TChildrenProps<'trigger'> &
+  import('@/shared/ui').TAppDialogProps
 
-type Signal = { signal?: AbortSignal }
+type TSignal = { signal?: AbortSignal }

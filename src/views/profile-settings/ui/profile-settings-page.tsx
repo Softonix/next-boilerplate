@@ -6,15 +6,15 @@ import { ProfileBanner } from './profile-banner'
 import { ProfileAvatar } from './profile-avatar'
 import { ProfileBillingInfo } from './profile-billing-info'
 import {
-  PersonalDetailsSchema,
+  TPersonalDetailsSchema,
   ProfilePersonalDetailsForm,
-  ProfilePersonalDetailsFormRefValue,
+  TProfilePersonalDetailsFormRefValue,
 } from './profile-personal-details-form'
 
 const ProfileSettingsPage = () => {
   const { updateUser, user } = useAuthContext()
   const { setIsLoading } = usePageLoadingContext()
-  const formRef = useRef<Nullable<ProfilePersonalDetailsFormRefValue>>(null)
+  const formRef = useRef<TNullable<TProfilePersonalDetailsFormRefValue>>(null)
 
   const router = useRouter()
   const [activeTab, setActiveTab] = useState('personalDetails')
@@ -25,7 +25,7 @@ const ProfileSettingsPage = () => {
     { tabId: 'billingInfo', name: 'Billing info' },
   ]
 
-  const updateUserAttrs = (values: PersonalDetailsSchema) => {
+  const updateUserAttrs = (values: TPersonalDetailsSchema) => {
     setIsLoading(true)
     return updateUser({ userAttributes: values })
       .then(() => {
@@ -53,7 +53,10 @@ const ProfileSettingsPage = () => {
           <h4 className="text-black font-medium mb-6 lg:text-lg">Profile settings</h4>
           <p className="text-xs mb-16 lg:mb-24">Update your photo and personal details</p>
 
-          <AppTabs tabs={tabs} onChange={setActiveTab}>
+          <AppTabs
+            tabs={tabs}
+            onChange={setActiveTab}
+          >
             <AppTabContent tabId="personalDetails">
               <ProfilePersonalDetailsForm
                 ref={formRef}
