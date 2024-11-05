@@ -14,14 +14,6 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdnstaging.carscout.ai',
-      },
-    ],
-  },
 }
 
 const analyzer = withBundleAnalyzer({

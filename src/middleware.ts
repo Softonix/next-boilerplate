@@ -1,24 +1,7 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { authService } from './shared/auth'
+import { NextResponse } from 'next/server'
 
-const protectedRoutes = ['/profile-settings']
-
-export default async function middleware(request: NextRequest) {
-  const path = request.nextUrl.pathname
-  const isProtectedRoute = protectedRoutes.includes(path)
-
-  try {
-    const isAuthenticated = await authService.verifySession()
-
-    if (isProtectedRoute && !isAuthenticated) {
-      return NextResponse.redirect(new URL('/?auth=sign-in', request.nextUrl))
-    }
-
-    return NextResponse.next()
-  } catch (error) {
-    console.log(error)
-    return false
-  }
+export default async function middleware() {
+  return NextResponse.next()
 }
 
 export const config = {

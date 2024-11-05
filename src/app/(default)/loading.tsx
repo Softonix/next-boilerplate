@@ -1,9 +1,7 @@
 'use client'
 
-import { AppLoading } from '@/shared/ui'
-
 const RootLoading = () => {
-  return <AppLoading />
+  return 'Loading...'
 }
 
 export default RootLoading

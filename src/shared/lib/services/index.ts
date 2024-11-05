@@ -1,2 +1,2 @@
 export { dayjsService } from './dayjs.service'
-export { googlemapsService } from './googlemaps.service'
+export { ClientOnlyError, authService } from './auth.service'

@@ -1,7 +1,5 @@
 import clsx, { ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-import Cookies from 'js-cookie'
-import { GEO_COOKIE_KEYS } from '../constants'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(...inputs))
@@ -11,21 +9,14 @@ export function wait(time: number) {
   return new Promise((resolve) => setTimeout(resolve, time))
 }
 
-export function formatCurrency(price: number, options: Intl.NumberFormatOptions = {}) {
-  options = {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    ...options,
-  }
-  return new Intl.NumberFormat('en-US', options).format(price)
-}
+export function useContextValue<T>(objectWithContext: Record<string, React.Context<T>>) {
+  const names = Object.keys(objectWithContext)
+  if (names.length !== 1) throw new Error('Provide only one context')
 
-export function splitStringByUppercase(string: string) {
-  const capitalizeFirstLetter = string.charAt(0).toUpperCase() + string.slice(1)
-  return capitalizeFirstLetter.split(/(?=[A-Z])/).join(' ')
-}
+  const contextName = names[0]
 
-export function hasGeoCookiesSet() {
-  return Cookies.get(GEO_COOKIE_KEYS.GEO_LOCATION_LAT) || Cookies.get(GEO_COOKIE_KEYS.ZIP_CODE)
+  const context = useContext(objectWithContext[contextName])
+
+  if (!context) throw new Error(`No ${contextName}Provider found up the component tree`)
+  return context
 }

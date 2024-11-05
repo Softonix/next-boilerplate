@@ -1,6 +1,0 @@
-export * from './search-prompts'
-export * from './search-result-related-prompts'
-export * from './search-result-car'
-export * from './search-history-list'
-export * from './group-search-result'
-export * from './search-result'

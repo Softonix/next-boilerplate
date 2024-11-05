@@ -15,10 +15,4 @@ type TNullable<T> = null | T
 type TIsNever<T> = [T] extends [never] ? true : false
 type TIndexedObject<T> = Record<string, T>
 
-type TDialogDefaultProps = {
-  closeDialog?: () => void
-  open?: boolean
-} & TChildrenProps<'trigger'> &
-  import('@/shared/ui').TAppDialogProps
-
 type TSignal = { signal?: AbortSignal }
