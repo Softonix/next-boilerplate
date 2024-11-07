@@ -1,47 +1,26 @@
-import {
-  DEFAULT_LOGIN_REDIRECT,
-  apiAuthPrefix,
-  authRoutes,
-  publicRoutes
-} from '~/config/routes'
+import { NextRequest, NextResponse } from 'next/server'
+import { authService } from './shared/auth'
 
-import { auth } from '~/server/next-auth'
+const protectedRoutes = ['/profile-settings']
 
-export default auth((req) => {
-  const { nextUrl } = req
-  const isLoggedIn = !!req.auth
+export default async function middleware(request: NextRequest) {
+  const path = request.nextUrl.pathname
+  const isProtectedRoute = protectedRoutes.includes(path)
 
-  const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix)
-  const isPublicRoute = publicRoutes.includes(nextUrl.pathname)
-  const isAuthRoute = authRoutes.includes(nextUrl.pathname)
+  try {
+    const isAuthenticated = await authService.verifySession()
 
-  if (isApiAuthRoute) {
-    return
-  }
-
-  if (isAuthRoute) {
-    if (isLoggedIn) {
-      return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl))
-    }
-    return
-  }
-
-  if (!isLoggedIn && !isPublicRoute) {
-    let callbackUrl = nextUrl.pathname
-    if (nextUrl.search) {
-      callbackUrl += nextUrl.search
+    if (isProtectedRoute && !isAuthenticated) {
+      return NextResponse.redirect(new URL('/?auth=sign-in', request.nextUrl))
     }
 
-    const encodedCallbackUrl = encodeURIComponent(callbackUrl)
-
-    return Response.redirect(new URL(
-      `/auth/login?callbackUrl=${encodedCallbackUrl}`,
-      nextUrl
-    ))
+    return NextResponse.next()
+  } catch (error) {
+    console.log(error)
+    return false
   }
-})
+}
 
-// Optionally, don't invoke Middleware on some paths
 export const config = {
-  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)']
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|images).*)'],
 }

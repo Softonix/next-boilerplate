@@ -1,0 +1,9 @@
+<svg viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9.49379 7.42914C6.88714 8.30756 6.02782 9.28563 5.3924 11.7217C4.75698 9.28563 3.89768 8.30756 1.29102 7.42914C3.89768 6.55078 4.75698 5.5727 5.3924 3.1366C6.02782 5.5727 6.88714 6.55078 9.49379 7.42914Z" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M12.7204 2.95565C11.2501 3.44915 10.7654 3.99869 10.4069 5.36734C10.0485 3.99869 9.56378 3.44915 8.09345 2.95565C9.56378 2.46216 10.0485 1.91262 10.4069 0.543945C10.7654 1.91262 11.2501 2.46216 12.7204 2.95565Z" stroke-linecap="round" stroke-linejoin="round"/>
+    <linearGradient id="gradient" x1="0.81958" y1="10.2212" x2="19.8686" y2="10.2212" gradientUnits="userSpaceOnUse">
+        <stop class="first-stop" offset="0" />
+        <stop class="second-stop" offset="0.4" />
+        <stop class="third-stop" offset="0.715" />
+    </linearGradient>
+</svg>
