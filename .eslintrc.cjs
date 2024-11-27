@@ -16,7 +16,7 @@ module.exports = {
     'react/no-unescaped-entities': 0,
     'react/jsx-no-undef': [0, { allowGlobals: true }],
     '@typescript-eslint/no-unused-vars': 1,
-    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-explicit-any': 1,
     '@typescript-eslint/no-unused-expressions': [2, { allowShortCircuit: true, allowTernary: true }],
     'react/no-children-prop': 0,
   },

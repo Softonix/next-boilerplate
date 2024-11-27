@@ -11,9 +11,6 @@ const nextConfig = {
       plugins: [...config.plugins, AutoImport(), AppIconsPlugin({ dir: './public/icons' })],
     }
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
 }
 
 const analyzer = withBundleAnalyzer({

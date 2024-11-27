@@ -1,6 +1,6 @@
 {
   "arrowParens": "always",
-  "singleAttributePerLine": true,
+  "singleAttributePerLine": false,
   "embeddedLanguageFormatting": "off",
   "proseWrap": "preserve",
   "tabWidth": 2,
